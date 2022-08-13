@@ -1,13 +1,14 @@
 <template>
   <Step :step-number="2">
-    <div class="step1-content">
+    <form @submit.prevent="$emit('onStepSubmit', enterpriseName)">
       <Input
+        v-model="enterpriseName"
         type="text"
-        label="Oi José, e qual sua empresa?"
+        :label="`Oi ${name}, e qual sua empresa?`"
         placeholder="Digite aqui..."
       />
-      <Button> OK {{ '>' }} </Button>
-    </div>
+      <Button type="submit"> OK {{ '>' }} </Button>
+    </form>
   </Step>
 </template>
 
@@ -15,13 +16,13 @@
 import Input from '../atoms/Input.vue';
 import Step from '../molecules/Step.vue';
 import Button from '../atoms/Button.vue';
+import { defineEmits, defineProps, ref } from 'vue';
+const props = defineProps<{
+  initialValue: string;
+  name: string;
+}>();
+defineEmits<{
+  (event: 'onStepSubmit', value: string): void;
+}>();
+const enterpriseName = ref(props.initialValue);
 </script>
-
-<style scoped lang="scss">
-.step1-content {
-  width: 100%;
-  > button {
-    margin-top: 1.2rem;
-  }
-}
-</style>

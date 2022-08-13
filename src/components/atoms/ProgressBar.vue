@@ -21,7 +21,7 @@ defineProps<ProgressBarProps>();
 
 .progress-bar-filled {
   height: 100%;
-  transition: 1s width;
+  transition: 0.5s width;
   background-color: var(--color-primary);
 }
 </style>

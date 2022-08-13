@@ -1,8 +1,17 @@
 <template>
-  <button>
+  <button :disabled="disabled" :type="type">
     <slot></slot>
   </button>
 </template>
+
+<script lang="ts" setup>
+import { defineProps } from 'vue';
+interface ButtonProps {
+  disabled?: boolean;
+  type?: 'submit' | 'button';
+}
+defineProps<ButtonProps>();
+</script>
 
 <style lang="scss" scoped>
 button {
@@ -21,5 +30,9 @@ button {
 
   border: 0;
   outline: none;
+
+  &:disabled {
+    opacity: 0.5;
+  }
 }
 </style>

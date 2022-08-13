@@ -1,18 +1,26 @@
 <template>
   <div class="form-container">
     <label for="">{{ label }}</label>
-    <input :type="type" :placeholder="placeholder" />
+    <input
+      :value="modelValue"
+      @input="$emit('update:modelValue', ($event as any).target.value)"
+      :type="type"
+      :placeholder="placeholder"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps, defineEmits } from 'vue';
 interface InputProps {
   label: string;
   type: string;
   placeholder: string;
+  modelValue: string;
 }
-
+defineEmits<{
+  (event: 'update:modelValue', value: string): void;
+}>();
 defineProps<InputProps>();
 </script>
 

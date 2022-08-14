@@ -20,27 +20,27 @@ const onStepSubmit = async (step: number) => {
 
   if (step === 7) {
     const formData = useFormData();
-    const form = new URLSearchParams();
-    form.append('dlut', '1660482217655');
-    form.append('entry.640831328', formData.name);
-    form.append('entry.1481678986', formData.enterprise);
+    const body = new FormData();
+    body.append('dlut', '1660482217655');
+    body.append('entry.640831328', formData.name);
+    body.append('entry.1481678986', formData.enterprise);
     for (const option of formData.contractOptions) {
-      form.append('entry.1958347428', option);
+      body.append('entry.1958347428', option);
     }
-    form.append('entry.1056916052', formData.referenceImg);
-    form.append('entry.462087437', formData.requestedDuration);
-    form.append('entry.603675729', formData.phone);
-    form.append('entry.391128899', formData.other);
-
+    body.append('entry.1056916052', formData.referenceImg);
+    body.append('entry.462087437', formData.requestedDuration);
+    body.append('entry.603675729', formData.phone);
+    body.append('entry.391128899', formData.other);
     try {
       await fetch(
         'https://docs.google.com/forms/d/e/1FAIpQLSdK6JSFNZjt1yXwmVKksxMS7IsvbeStjgRHa054_hjIQnlNYg/formResponse',
         {
           method: 'POST',
-          body: form,
+          body,
+          mode: 'no-cors',
+          redirect: 'follow',
           headers: {
-            'content-type': 'application/x-www-form-urlencoded',
-            redirect: 'follow',
+            'Content-Type': 'application/json',
           },
         }
       );

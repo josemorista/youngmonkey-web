@@ -27,15 +27,15 @@ const formData = useFormData();
 const options = [
   {
     label: '0-1 minuto',
-    value: '0-1 minuto',
+    value: '0 - 1 minuto',
   },
   {
     label: '1-3 minutos',
-    value: '1-3 minutos',
+    value: '1 - 3 minutos',
   },
   {
     label: '3-5 minutos',
-    value: '3-5 minutos',
+    value: '3 - 5 minutos',
   },
   {
     label: '+ de 5 minutos',

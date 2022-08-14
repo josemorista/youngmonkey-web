@@ -35,8 +35,8 @@ const options = [
     value: 'Edição de Vídeo',
   },
   {
-    label: 'Sound design',
-    value: 'Sound design',
+    label: 'Sound Design',
+    value: 'Sound Design',
   },
   {
     label: 'Roteiro',

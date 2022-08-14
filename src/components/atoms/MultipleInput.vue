@@ -1,6 +1,6 @@
 <template>
   <div class="form-container">
-    <label for="">{{ label }}</label>
+    <label class="custom-input-label" for="">{{ label }}</label>
     <legend>{{ legend }}</legend>
     <ul class="input-options">
       <li
@@ -60,20 +60,15 @@ div.form-container {
   display: flex;
   flex-direction: column;
 
-  label {
-    font-weight: 500;
-    font-size: 2rem;
-    display: block;
-  }
-
   legend {
     font-size: 1.3rem;
-    margin-bottom: 3rem;
     color: var(--color-disabled);
     font-style: italic;
   }
 
   ul.input-options {
+    margin-top: 3rem;
+
     li {
       display: flex;
       cursor: pointer;
@@ -104,8 +99,14 @@ div.form-container {
 
 @media (min-width: 700px) {
   div.form-container {
-    label {
-      font-size: 3.2rem;
+    ul.input-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+
+      li {
+        flex-basis: 30%;
+      }
     }
   }
 }

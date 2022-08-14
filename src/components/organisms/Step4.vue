@@ -17,7 +17,7 @@ import Step from '../molecules/Step.vue';
 import Button from '../atoms/Button.vue';
 import { defineEmits } from 'vue';
 import { useFormData } from '@/compositors/formData';
-import AutoComplete from '../molecules/AutoComplete.vue';
+import AutoComplete from '../atoms/AutoComplete.vue';
 defineEmits<{
   (event: 'onStepSubmit'): void;
 }>();

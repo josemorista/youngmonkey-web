@@ -18,6 +18,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 
   height: 3.5rem;
   padding: 0 1.8rem;
@@ -33,6 +34,12 @@ button {
 
   &:disabled {
     opacity: 0.5;
+  }
+}
+
+@media (min-width: 700px) {
+  button {
+    height: 4rem;
   }
 }
 </style>

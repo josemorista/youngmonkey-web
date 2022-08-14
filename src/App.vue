@@ -2,32 +2,19 @@
   <header>
     <ProgressBar :width="completedPercentage" />
   </header>
-  <main class="main-app">
-    <img class="logo" src="/assets/logo.svg" alt="logo-young-monkey" />
-    <section class="form">
-      <Step1 v-if="currentStep === 1" @on-step-submit="onStepSubmit(1)" />
-      <Step2 v-if="currentStep === 2" @on-step-submit="onStepSubmit(2)" />
-      <Step3 v-if="currentStep === 3" @on-step-submit="onStepSubmit(3)" />
-      <Step4 v-if="currentStep === 4" @on-step-submit="onStepSubmit(4)" />
-    </section>
-    <Footer />
-  </main>
+  <FlowForm v-if="completedPercentage !== 100" />
+  <Success v-if="completedPercentage === 100" />
 </template>
 
 <script setup lang="ts">
 import { toRefs } from 'vue';
 import ProgressBar from './components/atoms/ProgressBar.vue';
-import Footer from './components/molecules/Footer.vue';
-
-import Step1 from './components/organisms/Step1.vue';
-import Step2 from './components/organisms/Step2.vue';
-import Step3 from './components/organisms/Step3.vue';
-import Step4 from './components/organisms/Step4.vue';
 import { useFormStep } from './compositors/formStep';
+import FlowForm from './components/templates/FlowForm.vue';
+import Success from './components/templates/Success.vue';
 
 const formStepStore = useFormStep();
-const { onStepSubmit } = formStepStore;
-const { currentStep, completedPercentage } = toRefs(formStepStore);
+const { completedPercentage } = toRefs(formStepStore);
 </script>
 
 <style lang="scss">
@@ -68,50 +55,41 @@ h1 {
   --color-disabled: #8c8c8c;
 }
 
-main.main-app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  height: calc(100vh - 0.8rem);
-  overflow-y: auto;
-  padding: 0 3rem;
-
-  img.logo {
-    width: 9rem;
-    height: 9rem;
-    margin-top: 3rem;
+label {
+  &.custom-input-label {
+    font-weight: 500;
+    font-size: 2rem;
   }
+}
 
-  .form {
+input {
+  &.custom-input {
+    height: 3rem;
     width: 100%;
-  }
+    border: 0;
+    border-bottom: 2px solid var(--color-primary);
 
-  footer {
-    margin-bottom: 3rem;
+    &::placeholder {
+      font-size: 15px;
+      color: var(--color-primary-light);
+    }
   }
 }
 
 @media (min-width: 700px) {
-  main.main-app {
-    flex-direction: row;
-
-    img.logo {
-      margin-top: 0;
-      margin-left: 8rem;
-      width: 11rem;
-      height: 11rem;
+  label {
+    &.custom-input-label {
+      font-size: 3.2rem;
     }
+  }
 
-    .form {
-      flex: 1;
-      max-width: 80rem;
-      justify-self: center;
-    }
-
-    footer {
-      flex: 0;
-      align-self: flex-end;
+  input {
+    &.custom-input {
+      height: 5rem;
+      font-size: 2.8rem;
+      &::placeholder {
+        font-size: 2.8rem;
+      }
     }
   }
 }

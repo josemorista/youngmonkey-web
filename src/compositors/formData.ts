@@ -5,6 +5,9 @@ interface FormDataState {
   enterprise: string;
   contractOptions: Array<string>;
   requestedDuration: string;
+  referenceImg: string;
+  phone: string;
+  other: string;
 }
 
 const formData = reactive<FormDataState>({
@@ -12,6 +15,9 @@ const formData = reactive<FormDataState>({
   enterprise: '',
   contractOptions: [],
   requestedDuration: '',
+  referenceImg: '',
+  phone: '',
+  other: '',
 });
 
 export const useFormData = () => {

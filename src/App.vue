@@ -8,6 +8,7 @@
       <Step1 v-if="currentStep === 1" @on-step-submit="onStepSubmit(1)" />
       <Step2 v-if="currentStep === 2" @on-step-submit="onStepSubmit(2)" />
       <Step3 v-if="currentStep === 3" @on-step-submit="onStepSubmit(3)" />
+      <Step4 v-if="currentStep === 4" @on-step-submit="onStepSubmit(4)" />
     </section>
     <Footer />
   </main>
@@ -21,6 +22,7 @@ import Footer from './components/molecules/Footer.vue';
 import Step1 from './components/organisms/Step1.vue';
 import Step2 from './components/organisms/Step2.vue';
 import Step3 from './components/organisms/Step3.vue';
+import Step4 from './components/organisms/Step4.vue';
 import { useFormStep } from './compositors/formStep';
 
 const formStepStore = useFormStep();

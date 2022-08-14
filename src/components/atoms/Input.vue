@@ -1,7 +1,8 @@
 <template>
   <div class="form-container">
-    <label for="">{{ label }}</label>
+    <label :for="uniqueId">{{ label }}</label>
     <input
+      :id="uniqueId"
       :value="modelValue"
       @input="$emit('update:modelValue', ($event as any).target.value)"
       :type="type"
@@ -11,6 +12,7 @@
 </template>
 
 <script setup lang="ts">
+import { generateId } from '@/compositors/generators';
 import { defineProps, defineEmits } from 'vue';
 interface InputProps {
   label: string;
@@ -18,10 +20,14 @@ interface InputProps {
   placeholder: string;
   modelValue: string;
 }
+
 defineEmits<{
   (event: 'update:modelValue', value: string): void;
 }>();
+
 defineProps<InputProps>();
+
+const uniqueId = `#input-${generateId()}`;
 </script>
 
 <style lang="scss" scoped>

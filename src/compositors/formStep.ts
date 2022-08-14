@@ -19,7 +19,8 @@ const onStepSubmit = async (step: number) => {
   }
   if (step === 7) {
     const formData = useFormData();
-    const form = new FormData();
+    const form = new URLSearchParams();
+    form.append('dlut', '1660482217655');
     form.append('entry.640831328', formData.name);
     form.append('entry.1481678986', formData.enterprise);
     for (const option of formData.contractOptions) {

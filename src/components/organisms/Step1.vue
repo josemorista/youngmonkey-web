@@ -1,8 +1,8 @@
 <template>
   <Step :step-number="1">
-    <form @submit.prevent="$emit('onStepSubmit', name)">
+    <form @submit.prevent="$emit('onStepSubmit')">
       <Input
-        v-model="name"
+        v-model="formData.name"
         type="text"
         label="Qual seu nome?*"
         placeholder="Digite aqui..."
@@ -16,12 +16,10 @@
 import Input from '../atoms/Input.vue';
 import Step from '../molecules/Step.vue';
 import Button from '../atoms/Button.vue';
-import { defineEmits, defineProps, ref } from 'vue';
-const props = defineProps<{
-  initialValue: string;
-}>();
+import { defineEmits } from 'vue';
+import { useFormData } from '@/compositors/formData';
 defineEmits<{
-  (event: 'onStepSubmit', value: string): void;
+  (event: 'onStepSubmit'): void;
 }>();
-const name = ref(props.initialValue);
+const formData = useFormData();
 </script>

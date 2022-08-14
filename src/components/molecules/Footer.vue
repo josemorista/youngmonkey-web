@@ -1,32 +1,21 @@
 <template>
   <footer class="footer-container">
-    <Button :disabled="currentStep === 1" @click="$emit('onBeforeClick')">
+    <Button :disabled="currentStep === 1" @click="onBeforeClick">
       <img src="/assets/chevron-up.svg" alt="" />
     </Button>
-    <Button
-      :disabled="currentStep === highestStep"
-      @click="$emit('onNextClick')"
-    >
+    <Button :disabled="currentStep === highestStep" @click="onNextClick">
       <img src="/assets/chevron-up.svg" alt="" />
     </Button>
   </footer>
 </template>
 
 <script setup lang="ts">
-import { defineEmits, defineProps } from 'vue';
+import { toRefs } from 'vue';
 import Button from '../atoms/Button.vue';
-interface FooterProps {
-  currentStep: number;
-  highestStep: number;
-}
-
-interface FooterEmits {
-  (event: 'onNextClick'): void;
-  (event: 'onBeforeClick'): void;
-}
-
-defineProps<FooterProps>();
-defineEmits<FooterEmits>();
+import { useFormStep } from '../../compositors/formStep';
+const formStepStore = useFormStep();
+const { onBeforeClick, onNextClick } = formStepStore;
+const { currentStep, highestStep } = toRefs(formStepStore);
 </script>
 
 <style lang="scss">

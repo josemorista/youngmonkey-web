@@ -5,69 +5,27 @@
   <main class="main-app">
     <img class="logo" src="/assets/logo.svg" alt="logo-young-monkey" />
     <section class="form">
-      <Step1
-        :initial-value="formData.name"
-        v-if="currentStep === 1"
-        @on-step-submit="onStepSubmit(1, $event)"
-      />
-      <Step2
-        :name="formData.name"
-        :initial-value="formData.enterprise"
-        v-if="currentStep === 2"
-        @on-step-submit="onStepSubmit(2, $event)"
-      />
-      <Step3 v-if="currentStep === 3" :initial-value="[]" />
+      <Step1 v-if="currentStep === 1" @on-step-submit="onStepSubmit(1)" />
+      <Step2 v-if="currentStep === 2" @on-step-submit="onStepSubmit(2)" />
+      <Step3 v-if="currentStep === 3" @on-step-submit="onStepSubmit(3)" />
     </section>
-    <Footer
-      :current-step="currentStep"
-      :highest-step="highestStep"
-      @on-before-click="onBeforeClick"
-      @on-next-click="onNextClick"
-    />
+    <Footer />
   </main>
 </template>
 
 <script setup lang="ts">
-import { computed, ref, reactive } from 'vue';
+import { toRefs } from 'vue';
 import ProgressBar from './components/atoms/ProgressBar.vue';
-import Step1 from './components/organisms/Step1.vue';
 import Footer from './components/molecules/Footer.vue';
+
+import Step1 from './components/organisms/Step1.vue';
 import Step2 from './components/organisms/Step2.vue';
 import Step3 from './components/organisms/Step3.vue';
+import { useFormStep } from './compositors/formStep';
 
-const currentStep = ref(1);
-const highestStep = ref(1);
-const completedPercentage = computed(() => ((highestStep.value - 1) / 7) * 100);
-
-const formData = reactive({
-  name: '',
-  enterprise: '',
-});
-
-const onBeforeClick = () => {
-  currentStep.value--;
-};
-
-const onNextClick = () => {
-  currentStep.value++;
-};
-
-const onStepSubmit = (step: number, value: string) => {
-  switch (step) {
-    case 1: {
-      formData.name = value;
-      break;
-    }
-    case 2: {
-      formData.enterprise = value;
-      break;
-    }
-  }
-  if (step === highestStep.value) {
-    highestStep.value++;
-  }
-  onNextClick();
-};
+const formStepStore = useFormStep();
+const { onStepSubmit } = formStepStore;
+const { currentStep, completedPercentage } = toRefs(formStepStore);
 </script>
 
 <style lang="scss">
@@ -102,8 +60,10 @@ h1 {
 :root {
   --color-primary: #25044a;
   --color-primary-light: #25044a80;
+  --color-primary-lighter: #25044a1a;
+
   --color-secondary: #ffdc00;
-  --color-disabled: #e5e5e5;
+  --color-disabled: #8c8c8c;
 }
 
 main.main-app {
@@ -112,6 +72,7 @@ main.main-app {
   align-items: center;
   justify-content: space-between;
   height: calc(100vh - 0.8rem);
+  overflow-y: auto;
   padding: 0 3rem;
 
   img.logo {

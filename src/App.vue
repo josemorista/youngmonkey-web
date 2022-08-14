@@ -18,6 +18,7 @@ const { completedPercentage } = toRefs(formStepStore);
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
 * {
   margin: 0;
   padding: 0;

@@ -3,8 +3,8 @@
     <form @submit.prevent="$emit('onStepSubmit')">
       <Input
         v-model="formData.other"
-        type="phone"
-        label="Pronto ________, tem algo mais que você queira nos falar?"
+        type="text"
+        :label="`Pronto ${formData.name}, tem algo mais que você queira nos falar?`"
         placeholder="Digite sua resposta aqui."
       />
       <Button type="submit"> ENVIAR {{ '>' }} </Button>

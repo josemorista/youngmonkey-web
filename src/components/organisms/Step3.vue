@@ -28,27 +28,27 @@ const formData = useFormData();
 const options = [
   {
     label: 'Animação/ Motion Graphics',
-    value: 'A',
+    value: 'Animação / Motion',
   },
   {
-    label: 'Edição de vídeo',
-    value: 'B',
+    label: 'Edição de Vídeo',
+    value: 'Edição de Vídeo',
   },
   {
     label: 'Sound design',
-    value: 'C',
+    value: 'Sound design',
   },
   {
     label: 'Roteiro',
-    value: 'D',
+    value: 'Roteiro',
   },
   {
     label: 'Narração / Locução',
-    value: 'E',
+    value: 'Narração / Locução',
   },
   {
     label: 'UX e UI Design',
-    value: 'F',
+    value: 'UX e UI Design',
   },
 ];
 

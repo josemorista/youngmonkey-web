@@ -17,6 +17,7 @@ const onStepSubmit = async (step: number) => {
   if (step === highestStep.value) {
     highestStep.value++;
   }
+
   if (step === 7) {
     const formData = useFormData();
     const form = new URLSearchParams();
@@ -30,14 +31,16 @@ const onStepSubmit = async (step: number) => {
     form.append('entry.462087437', formData.requestedDuration);
     form.append('entry.603675729', formData.phone);
     form.append('entry.391128899', formData.other);
+
     try {
       await fetch(
-        'https://docs.google.com/forms/u/0/d/e/1FAIpQLSdK6JSFNZjt1yXwmVKksxMS7IsvbeStjgRHa054_hjIQnlNYg/formResponse',
+        'https://docs.google.com/forms/d/e/1FAIpQLSdK6JSFNZjt1yXwmVKksxMS7IsvbeStjgRHa054_hjIQnlNYg/formResponse',
         {
           method: 'POST',
           body: form,
           headers: {
             'content-type': 'application/x-www-form-urlencoded',
+            redirect: 'follow',
           },
         }
       );

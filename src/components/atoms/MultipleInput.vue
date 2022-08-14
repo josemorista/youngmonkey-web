@@ -4,7 +4,7 @@
     <legend>{{ legend }}</legend>
     <ul class="input-options">
       <li
-        v-for="option of options"
+        v-for="(option, index) of options"
         :key="option.value"
         :class="{
           ['input-option']: true,
@@ -16,7 +16,7 @@
           {{ option.label }}
         </span>
         <span class="input-value">
-          {{ option.value }}
+          {{ alphabet.charAt(index) }}
         </span>
       </li>
     </ul>
@@ -39,6 +39,7 @@ interface MultipleInputEmits {
   ($event: 'onOptionClick', value: string): void;
 }
 
+const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const props = defineProps<MultipleInputProps>();
 const emit = defineEmits<MultipleInputEmits>();
 

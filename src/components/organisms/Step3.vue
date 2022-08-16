@@ -8,7 +8,7 @@
         legend="Escolha um ou mais serviços"
         @on-option-click="onOptionSelection($event)"
       />
-      <Button type="submit"> OK {{ '>' }} </Button>
+      <Button :disabled="isFormDisabled" type="submit"> OK {{ '>' }} </Button>
     </form>
   </Step>
 </template>
@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import Step from '../molecules/Step.vue';
 import Button from '../atoms/Button.vue';
-import { defineEmits } from 'vue';
+import { computed, defineEmits } from 'vue';
 import MultipleInput from '../atoms/MultipleInput.vue';
 import { useFormData } from '@/compositors/formData';
 defineEmits<{
@@ -24,6 +24,10 @@ defineEmits<{
 }>();
 
 const formData = useFormData();
+
+const isFormDisabled = computed(() => {
+  return !formData.contractOptions.length;
+});
 
 const options = [
   {

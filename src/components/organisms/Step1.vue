@@ -1,13 +1,13 @@
 <template>
   <Step :step-number="1">
-    <form @submit.prevent="$emit('onStepSubmit')">
+    <form @submit.prevent="onStepSubmit">
       <Input
         v-model="formData.name"
         type="text"
         label="Qual seu nome?*"
         placeholder="Digite aqui..."
       />
-      <Button type="submit"> OK {{ '>' }} </Button>
+      <Button :disabled="isFormDisabled" type="submit"> OK {{ '>' }} </Button>
     </form>
   </Step>
 </template>
@@ -16,10 +16,18 @@
 import Input from '../atoms/Input.vue';
 import Step from '../molecules/Step.vue';
 import Button from '../atoms/Button.vue';
-import { defineEmits } from 'vue';
+import { computed, defineEmits } from 'vue';
 import { useFormData } from '@/compositors/formData';
-defineEmits<{
+const formData = useFormData();
+const emitter = defineEmits<{
   (event: 'onStepSubmit'): void;
 }>();
-const formData = useFormData();
+const isFormDisabled = computed(() => {
+  return !formData.name;
+});
+const onStepSubmit = () => {
+  if (!isFormDisabled.value) {
+    emitter('onStepSubmit');
+  }
+};
 </script>

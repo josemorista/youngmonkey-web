@@ -31,9 +31,12 @@ footer {
 }
 
 :root {
+	--color-white: #ffffff;
 	--color-primary: #25044a;
 	--color-primary-light: #25044a80;
 	--color-primary-lighter: #25044a1a;
+
+	--color-gray-400: #d9d9d9;
 
 	--color-secondary: #ffdc00;
 	--color-disabled: #8c8c8c;

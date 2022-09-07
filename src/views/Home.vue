@@ -1,18 +1,9 @@
 <template>
-	<div :class="{ 'flow-form': true, hidden: !isFlowFormOpen }">
-		<span class="close-button" @click="toggleFlowForm">X</span>
-		<YmFlowForm />
-	</div>
-	<div v-if="!isFlowFormOpen" @click="toggleFlowForm">Abrir</div>
+	<Navbar />
 </template>
 
 <script setup lang="ts">
-import YmFlowForm from 'flow-form/src/Module.vue';
-import { ref } from 'vue';
-const isFlowFormOpen = ref(true);
-const toggleFlowForm = () => {
-	isFlowFormOpen.value = !isFlowFormOpen.value;
-};
+import Navbar from '../components/molecules/Navbar.vue';
 </script>
 
 <style lang="scss" scoped>

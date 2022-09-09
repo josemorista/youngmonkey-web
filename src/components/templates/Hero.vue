@@ -2,13 +2,13 @@
 	<section id="hero" class="hero">
 		<img src="" alt="" />
 		<div class="hero-texts">
-			<h1 class="hero-text">{{ words[0] }}</h1>
-			<h1 class="hero-text even">{{ words[1] }}</h1>
+			<MorphText :texts="words" :morph-time="1" :cooldown-time="0.25" />
 		</div>
 	</section>
 </template>
 
 <script setup lang="ts">
+import MorphText from '../atoms/MorphText.vue';
 const words = ['Criativo', 'Genial'];
 </script>
 

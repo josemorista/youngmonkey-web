@@ -13,9 +13,13 @@
 			</filter>
 		</defs>
 	</svg>
-	<div id="container">
-		<span ref="text1" id="text1"></span>
-		<span ref="text2" id="text2"></span>
+	<div class="morph-container">
+		<slot name="pre"></slot>
+		<div id="container">
+			<span ref="text1" id="text1"></span>
+			<span ref="text2" id="text2"></span>
+		</div>
+		<slot name="pos"></slot>
 	</div>
 </template>
 
@@ -107,21 +111,23 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+#filters {
+	display: none;
+}
+
+.morph-container {
+	display: flex;
+}
+
 #container {
+	display: flex;
 	position: relative;
-	margin: auto;
-	top: 0;
-	bottom: 0;
 	filter: url(#threshold) blur(0.6px);
 }
 
 #text1,
 #text2 {
 	position: absolute;
-	width: 100%;
-	display: inline-block;
-	text-align: center;
-	user-select: none;
 }
 </style>

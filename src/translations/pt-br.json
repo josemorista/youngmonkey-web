@@ -1,0 +1,19 @@
+{
+	"navbar": {
+		"services": "Serviços",
+		"about": "Sobre",
+		"home": "Home"
+	},
+	"hero": {
+		"for_your": "para suas",
+		"do_different": "É preciso fazer diferente!",
+		"description": "Criatividade, originalidade e estratégia de engajamento é o que vai fazer sua ideia ganhar vida e brilhar em meio ao mais do mesmo.",
+		"speak_to_a_specialist": "Fale com um especialista"
+	},
+	"global": {
+		"contact": "contato",
+		"video": "vídeo | vídeos",
+		"creative": "criativo | criativos",
+		"idea": "ideia | ideias"
+	}
+}

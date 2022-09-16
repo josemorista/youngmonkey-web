@@ -1,6 +1,10 @@
 <template>
 	<Navbar />
-	<Hero />
+	<main class="container">
+		<div class="content">
+			<Hero />
+		</div>
+	</main>
 </template>
 
 <script setup lang="ts">
@@ -22,5 +26,15 @@ import Hero from '../components/templates/Hero.vue';
 
 .hidden {
 	display: none;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	.content {
+		width: calc(100% - 4rem);
+		max-width: 164rem;
+	}
 }
 </style>

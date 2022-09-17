@@ -8,12 +8,16 @@
 		"for_your": "para suas",
 		"do_different": "É preciso fazer diferente!",
 		"description": "Criatividade, originalidade e estratégia de engajamento é o que vai fazer sua ideia ganhar vida e brilhar em meio ao mais do mesmo.",
-		"speak_to_a_specialist": "Fale com um especialista"
+		"speak_to_a_specialist": "Fale com um especialista",
+		"videos": "vídeos",
+		"creatives": "criativos",
+		"ideas": "ideias"
+	},
+	"method_and_originality": {
+		"method_plus_originality": "MÉTODO + ORIGINALIDADE",
+		"content": "Toda a concepção do seu projeto, desde o roteiro até a pós produção, feito de maneira original e assertiva para impactar seu público-alvo."
 	},
 	"global": {
-		"contact": "contato",
-		"video": "vídeo | vídeos",
-		"creative": "criativo | criativos",
-		"idea": "ideia | ideias"
+		"contact": "contato"
 	}
 }

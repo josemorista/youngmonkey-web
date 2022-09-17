@@ -23,7 +23,7 @@ button.btn {
 	transition: filter 0.25s;
 
 	&:hover {
-		filter: opacity(0.9);
+		filter: brightness(0.9);
 	}
 
 	&.secondary {

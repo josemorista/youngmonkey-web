@@ -68,7 +68,7 @@ const socialLinks = [
 ];
 
 const resizeListener = () => {
-	if (window.innerWidth > 768) {
+	if (window.innerWidth >= 1024) {
 		isMenuOpen.value = true;
 	} else {
 		isMenuOpen.value = false;
@@ -148,9 +148,10 @@ nav.header-navbar {
 	}
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
 	nav.header-navbar {
 		justify-content: space-evenly;
+
 		div {
 			&.logo-and-menu {
 				width: auto;

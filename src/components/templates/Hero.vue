@@ -1,14 +1,16 @@
 <template>
 	<section id="hero" class="hero">
-		<img src="../../assets/img/hero.svg" alt="hero" />
+		<div class="lotier-player">
+			<LottieAnimation :loop="true" :autoPlay="true" :animationData="require('../../assets/lottie/hero-rocket.json')" />
+		</div>
 		<div class="hero-texts">
 			<h1 ref="text1Ref">
-				{{ $tc('global.video', 2) }}
-				<span class="typewriter forwards" ref="typewriter1"> {{ $tc('global.creative', 2) }}</span>
+				{{ $t('hero.videos') }}
+				<span class="typewriter forwards" ref="typewriter1"> {{ $t('hero.creatives') }}</span>
 			</h1>
 			<h1>
 				{{ $t('hero.for_your') }}
-				<span class="typewriter forwards" ref="typewriter2"> {{ $tc('global.idea', 2) }}</span>
+				<span class="typewriter forwards" ref="typewriter2"> {{ $t('hero.ideas') }}</span>
 			</h1>
 			<p class="do-different">
 				{{ $t('hero.do_different') }}
@@ -22,6 +24,7 @@
 </template>
 
 <script setup lang="ts">
+import { LottieAnimation } from 'lottie-web-vue';
 import { onMounted, onUnmounted, ref } from 'vue';
 import Button from '../atoms/Button.vue';
 const typewriter1 = ref<HTMLSpanElement>();
@@ -49,7 +52,7 @@ onUnmounted(() => {
 	if (intervalHandler) clearInterval(intervalHandler);
 });
 </script>
-const
+
 <style lang="scss" scoped>
 .typewriter {
 	overflow: hidden;
@@ -101,15 +104,17 @@ const
 	flex-wrap: wrap;
 	margin-top: 4rem;
 
-	img {
+	.lotier-player {
 		width: calc(100% - 2rem);
 		max-width: 60rem;
 		height: auto;
-		object-fit: contain;
 	}
 
 	button {
-		display: none;
+		width: 100%;
+		max-width: 40rem;
+		margin-top: 3rem;
+		font-size: 2rem;
 	}
 }
 .hero-texts {
@@ -140,18 +145,11 @@ const
 	}
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
 	.hero {
 		margin-top: 10rem;
 		flex-direction: row-reverse;
-		justify-content: space-evenly;
-
-		button {
-			display: block;
-			margin-top: 3rem;
-			padding: 1rem 4rem;
-			font-size: 2rem;
-		}
+		justify-content: space-between;
 	}
 
 	.hero-texts {

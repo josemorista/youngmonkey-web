@@ -3,6 +3,7 @@
 	<main class="container">
 		<div class="content">
 			<Hero />
+			<MethodAndOriginality />
 		</div>
 	</main>
 </template>
@@ -10,6 +11,7 @@
 <script setup lang="ts">
 import Navbar from '../components/molecules/Navbar.vue';
 import Hero from '../components/templates/Hero.vue';
+import MethodAndOriginality from '../components/templates/MethodAndOriginality.vue';
 </script>
 
 <style lang="scss" scoped>
@@ -34,7 +36,8 @@ import Hero from '../components/templates/Hero.vue';
 	align-items: center;
 	.content {
 		width: calc(100% - 4rem);
-		max-width: 164rem;
+		max-width: 1360px;
+		margin-bottom: 2rem;
 	}
 }
 </style>

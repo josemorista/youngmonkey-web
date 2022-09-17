@@ -8,7 +8,7 @@
 					:title="tab.title"
 					:content="tab.content"
 				/>
-				<div :class="{ 'tab-image': true, active: activeTab === index }">
+				<div class="tab-image" v-if="activeTab === index">
 					<img src="" alt="" />
 				</div>
 			</li>
@@ -84,6 +84,14 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
+@keyframes load-tab-image {
+	from {
+		transform: scaleY(0);
+	}
+	to {
+		transform: scaleY();
+	}
+}
 .auto-tab {
 	ul {
 		li {
@@ -96,20 +104,18 @@ onUnmounted(() => {
 	.tab-image {
 		width: 100%;
 		display: flex;
-		height: 0;
 		justify-content: center;
 		align-items: center;
 		overflow-y: hidden;
 		margin-top: 1.6rem;
+		animation-name: load-tab-image;
+		animation-duration: 0.8s;
+		transform-origin: top right;
 
 		> * {
 			width: 28rem;
 			height: 28rem;
 			background-color: #d9d9d9;
-		}
-
-		&.active {
-			height: 100%;
 		}
 	}
 

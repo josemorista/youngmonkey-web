@@ -1,34 +1,39 @@
 <template>
-	<nav class="header-navbar">
-		<div class="logo-and-menu">
-			<img src="../../assets/img/logo.png" alt="logo young monkey" />
-			<div class="menu-button">
-				<MenuButton @click="toggleMenuOpen" />
+	<header class="navbar-container">
+		<nav class="header-navbar">
+			<div class="logo-and-menu">
+				<div class="logo">
+					<lottie-animation :loop="true" :animationData="require('../../assets/lottie/logo.json')" />
+				</div>
+				<div class="menu-button">
+					<MenuButton @click="toggleMenuOpen" />
+				</div>
 			</div>
-		</div>
-		<div :class="{ 'nav-links': true, hidden: !isMenuOpen }">
-			<ul>
-				<li v-for="navlink of navLinks" v-once :key="navlink.to">
-					<a :href="navlink.to" class="nav-link-anchor">{{ $t(`navbar.${navlink.text}`) }}</a>
-				</li>
-			</ul>
-			<Button variant="secondary"> {{ $t('global.contact') }} </Button>
-		</div>
-		<div class="social-links">
-			<a
-				class="social-link-anchor"
-				v-for="socialLink of socialLinks"
-				:key="socialLink.icon"
-				:href="socialLink.to"
-				v-once
-			>
-				<img :src="require(`../../assets/icons/${socialLink.icon}.svg`)" :alt="socialLink.icon" />
-			</a>
-		</div>
-	</nav>
+			<div :class="{ 'nav-links': true, hidden: !isMenuOpen }">
+				<ul>
+					<li v-for="navlink of navLinks" v-once :key="navlink.to">
+						<a :href="navlink.to" class="nav-link-anchor">{{ $t(`navbar.${navlink.text}`) }}</a>
+					</li>
+				</ul>
+				<Button variant="secondary"> {{ $t('global.contact') }} </Button>
+			</div>
+			<div class="social-links">
+				<a
+					class="social-link-anchor"
+					v-for="socialLink of socialLinks"
+					:key="socialLink.icon"
+					:href="socialLink.to"
+					v-once
+				>
+					<img :src="require(`../../assets/icons/${socialLink.icon}.svg`)" :alt="socialLink.icon" />
+				</a>
+			</div>
+		</nav>
+	</header>
 </template>
 
 <script setup lang="ts">
+import { LottieAnimation } from 'lottie-web-vue';
 import MenuButton from '../atoms/MenuButton.vue';
 import Button from '../atoms/Button.vue';
 import { onMounted, onUnmounted, ref } from 'vue';
@@ -86,12 +91,18 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
-nav.header-navbar {
-	width: 100%;
+header.navbar-container {
 	display: flex;
+	justify-content: center;
 	background-color: var(--color-primary);
+}
+nav.header-navbar {
+	display: flex;
+	width: calc(100% - 4rem);
+	max-width: 1360px;
 	flex-wrap: wrap;
-	padding: 2rem 2.6rem;
+	padding: 1rem 0;
+	background-color: transparent;
 
 	div {
 		&.logo-and-menu {
@@ -99,6 +110,10 @@ nav.header-navbar {
 			width: 100%;
 			justify-content: space-between;
 			align-items: center;
+
+			.logo {
+				width: 20rem;
+			}
 		}
 
 		&.nav-links {
@@ -107,9 +122,11 @@ nav.header-navbar {
 			align-items: center;
 			width: 100%;
 			overflow: hidden;
-			margin-top: 4rem;
+			max-height: 50rem;
+			transition: max-height 0.5s;
 
 			ul {
+				margin-top: 4rem;
 				li {
 					text-align: center;
 					margin-bottom: 1.6rem;
@@ -117,9 +134,12 @@ nav.header-navbar {
 			}
 
 			&.hidden {
-				margin-top: 0;
 				max-height: 0;
 			}
+		}
+
+		> button {
+			margin-bottom: 2rem;
 		}
 
 		&.social-links {
@@ -150,7 +170,7 @@ nav.header-navbar {
 
 @media (min-width: 1024px) {
 	nav.header-navbar {
-		justify-content: space-evenly;
+		justify-content: space-between;
 
 		div {
 			&.logo-and-menu {
@@ -158,20 +178,28 @@ nav.header-navbar {
 				.menu-button {
 					display: none;
 				}
+
+				.logo {
+					width: 24rem;
+				}
 			}
 
 			&.nav-links {
 				flex-direction: row;
 				width: auto;
-				margin-top: 0;
 
 				ul {
+					margin-top: 0;
 					display: flex;
 					li {
 						margin-bottom: 0;
 						margin-right: 4rem;
 					}
 				}
+			}
+
+			> button {
+				margin-bottom: 0;
 			}
 
 			&.social-links {

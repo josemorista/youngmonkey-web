@@ -10,11 +10,11 @@
 .menu-button {
 	display: flex;
 	flex-direction: column;
-	gap: 0.4rem;
+	gap: 0.6rem;
 	width: 4rem;
 	.bar {
 		display: block;
-		height: 8px;
+		height: 6px;
 		width: 100%;
 		background-color: var(--color-gray-400);
 		border-radius: 8px;

@@ -2,10 +2,15 @@
 	<section class="method-and-originality">
 		<h1>{{ $t('method_and_originality.method_plus_originality') }}</h1>
 		<p>{{ $t('method_and_originality.content') }}</p>
+		<div class="auto-tab">
+			<AutoTabSwitcher />
+		</div>
 	</section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import AutoTabSwitcher from '../organisms/AutoTabSwitcher.vue';
+</script>
 
 <style lang="scss" scoped>
 section.method-and-originality {
@@ -14,6 +19,22 @@ section.method-and-originality {
 		font-family: 'Bebas Neue';
 		font-size: 6.4rem;
 		color: var(--color-primary);
+	}
+
+	.auto-tab {
+		margin-top: 5rem;
+	}
+}
+
+@media (min-width: 1024px) {
+	section.method-and-originality {
+		> h1 {
+			font-size: 9rem;
+		}
+
+		.auto-tab {
+			margin-top: 8rem;
+		}
 	}
 }
 </style>

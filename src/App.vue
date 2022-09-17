@@ -37,6 +37,7 @@ footer {
 	--color-primary-lighter: #25044a1a;
 
 	--color-gray-400: #d9d9d9;
+	--color-gray-600: rgba(37, 4, 74, 0.5);
 	--color-black-600: #1e1e1e;
 
 	--color-secondary: #ffdc00;

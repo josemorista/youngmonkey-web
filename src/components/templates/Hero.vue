@@ -2,11 +2,13 @@
 	<section id="hero" class="hero">
 		<img src="../../assets/img/hero.svg" alt="hero" />
 		<div class="hero-texts">
-			<h1 class="typewriter" ref="text1Ref">
-				{{ $tc('global.video', 2) }} <span> {{ $tc('global.creative', 2) }}</span>
+			<h1 ref="text1Ref">
+				{{ $tc('global.video', 2) }}
+				<span class="typewriter forwards" ref="typewriter1"> {{ $tc('global.creative', 2) }}</span>
 			</h1>
-			<h1 class="typewriter">
-				{{ $t('hero.for_your') }} <span> {{ $tc('global.idea', 2) }}</span>
+			<h1>
+				{{ $t('hero.for_your') }}
+				<span class="typewriter forwards" ref="typewriter2"> {{ $tc('global.idea', 2) }}</span>
 			</h1>
 			<p class="do-different">
 				{{ $t('hero.do_different') }}
@@ -20,15 +22,31 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import Button from '../atoms/Button.vue';
-const text1Ref = ref<HTMLParagraphElement>();
+const typewriter1 = ref<HTMLSpanElement>();
+const typewriter2 = ref<HTMLSpanElement>();
+
+const toggleAnimation = (el: HTMLSpanElement) => {
+	if (el.classList.contains('backwards')) {
+		el.classList.replace('backwards', 'forwards');
+		return;
+	}
+	el.classList.replace('forwards', 'backwards');
+};
+
+let intervalHandler: number;
 onMounted(() => {
-	setTimeout(() => {
-		if (text1Ref.value) {
-			text1Ref.value.style.border = 'none';
+	intervalHandler = setInterval(() => {
+		if (typewriter1.value && typewriter2.value) {
+			toggleAnimation(typewriter1.value);
+			toggleAnimation(typewriter2.value);
 		}
-	}, 3500);
+	}, 2500);
+});
+
+onUnmounted(() => {
+	if (intervalHandler) clearInterval(intervalHandler);
 });
 </script>
 const
@@ -37,21 +55,29 @@ const
 	overflow: hidden;
 	white-space: nowrap;
 	border-right: 3px solid var(--color-secondary);
-	animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
-
-	&:nth-of-type(2) {
-		animation-fill-mode: backwards;
-		animation-delay: 3.6s;
+	&.forwards {
+		animation: typing-forward 2.5s steps(30, end), blink-caret 0.75s step-end infinite;
+	}
+	&.backwards {
+		animation: typing-backwards 2.5s steps(30, end), blink-caret 0.75s step-end infinite;
 	}
 }
 
-@keyframes typing {
+@keyframes typing-forward {
 	0% {
 		width: 0;
 	}
 	100% {
 		width: 100%;
-		border-color: transparent;
+	}
+}
+
+@keyframes typing-backwards {
+	0% {
+		width: 100%;
+	}
+	100% {
+		width: 0;
 	}
 }
 
@@ -87,17 +113,18 @@ const
 	}
 }
 .hero-texts {
-	max-width: 48.8rem;
+	max-width: 50rem;
 	h1 {
-		line-height: 1;
-		max-width: 35rem;
 		text-transform: uppercase;
 		color: var(--color-primary);
 		font-size: 6.4rem;
 		font-family: 'Bebas Neue';
 		span {
+			padding-right: 1px;
+			display: inline-flex;
 			font-family: inherit;
 			font-size: inherit;
+			max-width: fit-content;
 			color: var(--color-secondary);
 		}
 	}
@@ -130,7 +157,6 @@ const
 	.hero-texts {
 		h1 {
 			font-size: 9rem;
-			max-width: 100%;
 		}
 	}
 }

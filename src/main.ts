@@ -6,7 +6,6 @@ import ptBr from './translations/pt-br.json';
 
 const i18n = createI18n({
 	locale: 'pt-br',
-	legacy: false,
 	fallbackLocale: 'pt-br',
 	messages: {
 		'pt-br': ptBr,

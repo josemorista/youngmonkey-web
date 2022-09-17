@@ -2,40 +2,11 @@
 	<section id="hero" class="hero">
 		<img src="../../assets/img/hero.svg" alt="hero" />
 		<div class="hero-texts">
-			<h1>
-				<TypeWriterText
-					ref="t1Ref"
-					:text="texts[0]"
-					:reverse-delay="t1RevDelay"
-					:start-delay="0"
-					:change-time="changeTime"
-				/>
-
-				<TypeWriterText
-					ref="t2Ref"
-					custom-class="highlight"
-					:reverse-delay="t2RevDelay"
-					:text="texts[1]"
-					:start-delay="t2initDelay"
-					:change-time="changeTime"
-				/>
-
-				<TypeWriterText
-					ref="t3Ref"
-					:reverse-delay="t3RevDelay"
-					:text="texts[2]"
-					:start-delay="t3initDelay"
-					:change-time="changeTime"
-				/>
-
-				<TypeWriterText
-					ref="t4Ref"
-					:reverse-delay="0"
-					custom-class="highlight"
-					:text="texts[3]"
-					:start-delay="t4initDelay"
-					:change-time="changeTime"
-				/>
+			<h1 class="typewriter" ref="text1Ref">
+				{{ $tc('global.video', 2) }} <span> {{ $tc('global.creative', 2) }}</span>
+			</h1>
+			<h1 class="typewriter">
+				{{ $t('hero.for_your') }} <span> {{ $tc('global.idea', 2) }}</span>
 			</h1>
 			<p class="do-different">
 				{{ $t('hero.do_different') }}
@@ -49,39 +20,53 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
-import { useI18n } from 'vue-i18n';
+import { onMounted, ref } from 'vue';
 import Button from '../atoms/Button.vue';
-import TypeWriterText from '../atoms/TypeWriterText.vue';
-const { t } = useI18n();
-const changeTime = 220;
-const texts = computed(() => [t('global.video', 2), t('global.creative', 2), t('hero.for_your'), t('global.idea', 2)]);
-
-const t2initDelay = computed(() => texts.value[0].length * changeTime);
-const t3initDelay = computed(() => texts.value[1].length * changeTime + t2initDelay.value);
-const t4initDelay = computed(() => texts.value[2].length * changeTime + t3initDelay.value);
-
-const textsSize = computed(() => texts.value.reduce((acum, el) => acum + el.length, 0));
-const t1RevDelay = computed(() => (textsSize.value - texts.value[0].length) * 2 * changeTime);
-const t2RevDelay = computed(() => (texts.value[2].length + texts.value[3].length) * 2 * changeTime);
-const t3RevDelay = computed(() => texts.value[3].length * 2 * changeTime);
-
-const t1Ref = ref();
-const t2Ref = ref();
-const t3Ref = ref();
-const t4Ref = ref();
-
+const text1Ref = ref<HTMLParagraphElement>();
 onMounted(() => {
-	setInterval(() => {
-		t1Ref.value?.reset();
-		t2Ref.value?.reset();
-		t3Ref.value?.reset();
-		t4Ref.value?.reset();
-	}, textsSize.value * changeTime * 2);
+	setTimeout(() => {
+		if (text1Ref.value) {
+			text1Ref.value.style.border = 'none';
+		}
+	}, 3500);
 });
 </script>
 const
 <style lang="scss" scoped>
+.typewriter {
+	overflow: hidden;
+	white-space: nowrap;
+	border-right: 3px solid var(--color-secondary);
+	animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
+
+	&:nth-of-type(2) {
+		animation-fill-mode: backwards;
+		animation-delay: 3.6s;
+	}
+}
+
+@keyframes typing {
+	0% {
+		width: 0;
+	}
+	100% {
+		width: 100%;
+		border-color: transparent;
+	}
+}
+
+@keyframes blink-caret {
+	0% {
+		border-color: transparent;
+	}
+	50% {
+		border-color: var(--color-secondary);
+	}
+	100% {
+		border-color: transparent;
+	}
+}
+
 .hero {
 	width: 100%;
 	display: flex;
@@ -102,19 +87,18 @@ const
 	}
 }
 .hero-texts {
-	max-width: 50rem;
+	max-width: 48.8rem;
 	h1 {
+		line-height: 1;
+		max-width: 35rem;
 		text-transform: uppercase;
 		color: var(--color-primary);
 		font-size: 6.4rem;
 		font-family: 'Bebas Neue';
 		span {
-			margin-right: 1rem;
-			font-family: 'Bebas Neue';
+			font-family: inherit;
 			font-size: inherit;
-			&.highlight {
-				color: var(--color-secondary);
-			}
+			color: var(--color-secondary);
 		}
 	}
 
@@ -124,6 +108,7 @@ const
 			font-weight: 500;
 			color: var(--color-black-600);
 			margin-bottom: 2rem;
+			margin-top: 2.4rem;
 		}
 	}
 }
@@ -144,7 +129,8 @@ const
 
 	.hero-texts {
 		h1 {
-			margin-bottom: 3.2rem;
+			font-size: 9rem;
+			max-width: 100%;
 		}
 	}
 }

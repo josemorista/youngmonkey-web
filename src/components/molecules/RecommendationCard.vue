@@ -1,5 +1,5 @@
 <template>
-	<div class="recomendation-card">
+	<div class="recommendation-card">
 		<header>
 			<img class="enterprise-img" src="../../assets/img/dolby.png" alt="" />
 		</header>
@@ -7,7 +7,7 @@
 			<div class="quote">
 				<img src="../../assets/icons/quote.svg" alt="''" />
 			</div>
-			<p class="recomendation-text">
+			<p class="recommendation-text">
 				<cite>
 					Working with YoungMonkey was great. They created a very professional video in a short time frame with very
 					little guidance from me. Updates and improvements were very quickly integrated. I would definitely work with
@@ -29,7 +29,7 @@
 </template>
 
 <style lang="scss" scoped>
-div.recomendation-card {
+div.recommendation-card {
 	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
 	border-radius: 16px;
 	padding: 1.6rem;
@@ -57,7 +57,7 @@ div.recomendation-card {
 	}
 
 	p {
-		&.recomendation-text {
+		&.recommendation-text {
 			text-align: center;
 			cite {
 				line-height: 2rem;
@@ -95,7 +95,7 @@ div.recomendation-card {
 }
 
 @media (min-width: 1024px) {
-	div.recomendation-card {
+	div.recommendation-card {
 		padding: 4rem;
 
 		> main {

@@ -1,24 +1,24 @@
 <template>
-	<section class="recomendations">
+	<section class="recommendations">
 		<ul>
 			<li>
-				<RecomendationCard />
+				<RecommendationCard />
 			</li>
 		</ul>
 	</section>
 </template>
 
 <script setup lang="ts">
-import RecomendationCard from '../molecules/RecomendationCard.vue';
+import RecommendationCard from '../molecules/RecommendationCard.vue';
 </script>
 
 <style lang="scss" scoped>
-section.recomendations {
+section.recommendations {
 	margin-top: 14rem;
 }
 
 @media (min-width: 1024px) {
-	section.recomendations {
+	section.recommendations {
 		margin-top: 24rem;
 	}
 }

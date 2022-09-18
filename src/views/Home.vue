@@ -5,7 +5,7 @@
 			<Hero />
 			<MethodAndOriginality />
 			<MultiPlatform />
-			<Recomendations />
+			<Recommendations />
 		</div>
 	</main>
 </template>
@@ -15,7 +15,7 @@ import Navbar from '../components/molecules/Navbar.vue';
 import Hero from '../components/templates/Hero.vue';
 import MethodAndOriginality from '../components/templates/MethodAndOriginality.vue';
 import MultiPlatform from '../components/templates/MultiPlatform.vue';
-import Recomendations from '../components/templates/Recomendations.vue';
+import Recommendations from '../components/templates/Recommendations.vue';
 </script>
 
 <style lang="scss" scoped>

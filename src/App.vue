@@ -43,6 +43,7 @@ strong {
 
 	--color-gray-400: #d9d9d9;
 	--color-gray-600: rgba(37, 4, 74, 0.5);
+	--color-gray-800: #5b5b5b;
 	--color-black-600: #1e1e1e;
 
 	--color-secondary: #ffdc00;

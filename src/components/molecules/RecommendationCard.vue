@@ -1,7 +1,11 @@
 <template>
 	<div class="recommendation-card">
 		<header>
-			<img class="enterprise-img" src="../../assets/img/dolby.png" alt="" />
+			<img
+				class="enterprise-img"
+				:src="require(`../../assets/img/${recommendation.author.enterprise.picture}`)"
+				:alt="recommendation.author.enterprise.name"
+			/>
 		</header>
 		<main>
 			<div class="quote">
@@ -9,9 +13,7 @@
 			</div>
 			<p class="recommendation-text">
 				<cite>
-					Working with YoungMonkey was great. They created a very professional video in a short time frame with very
-					little guidance from me. Updates and improvements were very quickly integrated. I would definitely work with
-					YongMonkey again.
+					{{ recommendation.citation }}
 				</cite>
 			</p>
 			<div class="quote quote-end">
@@ -19,14 +21,27 @@
 			</div>
 		</main>
 		<footer>
-			<img class="author-img" src="../../assets/img/brian.png" alt="" />
+			<img
+				class="author-img"
+				:src="require(`../../assets/img/${recommendation.author.picture}`)"
+				:alt="recommendation.author.name"
+			/>
 			<div class="author-info">
-				<p class="author">Brian Arnott</p>
-				<p class="author-position">Director, Dolby Australia</p>
+				<p class="author">{{ recommendation.author.name }}</p>
+				<p class="author-position">{{ recommendation.author.position }}</p>
 			</div>
 		</footer>
 	</div>
 </template>
+
+<script setup lang="ts">
+import { Recommendation } from 'src/entities/Recommendation';
+import { defineProps } from 'vue';
+interface RecommendationCardProps {
+	recommendation: Recommendation;
+}
+defineProps<RecommendationCardProps>();
+</script>
 
 <style lang="scss" scoped>
 div.recommendation-card {

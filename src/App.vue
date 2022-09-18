@@ -20,6 +20,7 @@ import Home from './views/Home.vue';
 p,
 span,
 button,
+cite,
 input,
 a,
 div,

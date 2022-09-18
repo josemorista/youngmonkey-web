@@ -30,6 +30,10 @@ footer {
 	font-size: 1.6rem;
 }
 
+strong {
+	font-size: inherit;
+}
+
 :root {
 	--color-white: #ffffff;
 	--color-primary: #25044a;

@@ -27,6 +27,12 @@
 			"tab4_content": "Um bom design visa tornar a experiência do usuário mais intuitiva, facilitando toda a trajetória de quem utiliza sua plataforma ou aplicativo"
 		}
 	},
+	"mult_platform": {
+		"title": "Suporte para multi plataformas",
+		"content1": "Através dos Lotties, animações podem ser incorporadas em seu site ou App, sendo muito mais leve quando comparado a sequências GIF e PNG, e não pixeliza.",
+		"content2_part1": "Para todos os desenvolvedores",
+		"content2_part2": "as transferências de Lottie são super fáceis. Seja Web, iOS ou Android."
+	},
 	"global": {
 		"contact": "contato"
 	}

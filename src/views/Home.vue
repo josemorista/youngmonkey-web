@@ -4,6 +4,7 @@
 		<div class="content">
 			<Hero />
 			<MethodAndOriginality />
+			<MultiPlatform />
 		</div>
 	</main>
 </template>
@@ -12,6 +13,7 @@
 import Navbar from '../components/molecules/Navbar.vue';
 import Hero from '../components/templates/Hero.vue';
 import MethodAndOriginality from '../components/templates/MethodAndOriginality.vue';
+import MultiPlatform from '../components/templates/MultiPlatform.vue';
 </script>
 
 <style lang="scss" scoped>

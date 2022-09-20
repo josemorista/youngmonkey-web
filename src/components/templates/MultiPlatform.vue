@@ -11,12 +11,38 @@
 			{{ $t('mult_platform.content2_part2') }}
 		</p>
 		<div class="img">
-			<img src="" alt="mult-platform" />
+			<lottie-animation
+				:loop="true"
+				:animation-data="currentAnimation === 'desktop' ? desktopAnimation : mobileAnimation"
+			></lottie-animation>
 		</div>
 	</section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { LottieAnimation } from 'lottie-web-vue';
+import { onMounted, onUnmounted, ref } from 'vue';
+import desktopAnimation from '../../assets/lottie/mult-desktop.json';
+import mobileAnimation from '../../assets/lottie/mult-mobile.json';
+
+const currentAnimation = ref<'mobile' | 'desktop'>('desktop');
+
+const resizeObserver = () => {
+	if (window.innerWidth < 1024) {
+		currentAnimation.value = 'mobile';
+	} else {
+		currentAnimation.value = 'desktop';
+	}
+};
+
+onMounted(() => {
+	document.addEventListener('resize', resizeObserver);
+});
+
+onUnmounted(() => {
+	document.removeEventListener('resize', resizeObserver);
+});
+</script>
 
 <style lang="scss" scoped>
 section.mult-platform {
@@ -49,9 +75,7 @@ section.mult-platform {
 
 	.img {
 		width: 100%;
-		min-height: 20rem;
-		max-width: 76rem;
-		background-color: lightgray;
+		max-width: 60rem;
 		margin-top: 3.2rem;
 		margin-bottom: -10rem;
 	}
@@ -65,7 +89,6 @@ section.mult-platform {
 
 		.img {
 			margin-top: 5rem;
-			min-height: 44rem;
 		}
 	}
 }

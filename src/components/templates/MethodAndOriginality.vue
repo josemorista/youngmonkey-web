@@ -29,7 +29,7 @@ section.method-and-originality {
 @media (min-width: 1024px) {
 	section.method-and-originality {
 		> h1 {
-			font-size: 9rem;
+			font-size: 8.4rem;
 		}
 
 		.auto-tab {

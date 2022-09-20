@@ -154,7 +154,7 @@ onUnmounted(() => {
 
 	.hero-texts {
 		h1 {
-			font-size: 9rem;
+			font-size: 8.4rem;
 		}
 	}
 }

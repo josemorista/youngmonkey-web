@@ -1,5 +1,5 @@
 <template>
-	<section class="method-and-originality">
+	<section id="method-and-originality" class="method-and-originality">
 		<h1>{{ $t('method_and_originality.method_plus_originality') }}</h1>
 		<p>{{ $t('method_and_originality.content') }}</p>
 		<div class="auto-tab">

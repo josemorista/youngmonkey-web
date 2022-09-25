@@ -48,7 +48,7 @@ const navLinks = [
 		text: 'home',
 	},
 	{
-		to: '#services',
+		to: '#method-and-originality',
 		text: 'services',
 	},
 	{
@@ -95,6 +95,11 @@ header.navbar-container {
 	display: flex;
 	justify-content: center;
 	background-color: var(--color-primary);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	z-index: 1;
 }
 nav.header-navbar {
 	display: flex;
@@ -102,6 +107,7 @@ nav.header-navbar {
 	max-width: 1360px;
 	flex-wrap: wrap;
 	padding: 1rem 0;
+	min-height: 8.4rem;
 	background-color: transparent;
 
 	div {

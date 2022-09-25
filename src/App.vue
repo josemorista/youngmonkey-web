@@ -7,6 +7,11 @@ import Home from './views/Home.vue';
 </script>
 
 <style lang="scss">
+html {
+	scroll-padding-top: 10rem; // height of sticky header
+	scroll-behavior: smooth;
+}
+
 * {
 	margin: 0;
 	padding: 0;

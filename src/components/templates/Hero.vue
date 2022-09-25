@@ -102,7 +102,7 @@ onUnmounted(() => {
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
-	margin-top: 4rem;
+	margin-top: 14rem;
 
 	.lotier-player {
 		width: calc(100% - 2rem);
@@ -147,7 +147,7 @@ onUnmounted(() => {
 
 @media (min-width: 1024px) {
 	.hero {
-		margin-top: 10rem;
+		margin-top: 20rem;
 		flex-direction: row-reverse;
 		justify-content: space-between;
 	}

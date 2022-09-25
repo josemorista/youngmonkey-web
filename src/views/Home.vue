@@ -6,6 +6,7 @@
 			<MethodAndOriginality />
 			<MultiPlatform />
 			<Recommendations />
+			<YourVideo />
 		</div>
 	</main>
 </template>
@@ -16,6 +17,7 @@ import Hero from '../components/templates/Hero.vue';
 import MethodAndOriginality from '../components/templates/MethodAndOriginality.vue';
 import MultiPlatform from '../components/templates/MultiPlatform.vue';
 import Recommendations from '../components/templates/Recommendations.vue';
+import YourVideo from '../components/templates/YourVideo.vue';
 </script>
 
 <style lang="scss" scoped>

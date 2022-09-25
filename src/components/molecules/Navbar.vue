@@ -11,7 +11,7 @@
 			</div>
 			<div :class="{ 'nav-links': true, hidden: !isMenuOpen }">
 				<ul>
-					<li v-for="navlink of navLinks" v-once :key="navlink.to">
+					<li v-for="navlink of navLinks" v-once :key="navlink.to" @click="toggleMenuOpen">
 						<a :href="navlink.to" class="nav-link-anchor">{{ $t(`navbar.${navlink.text}`) }}</a>
 					</li>
 				</ul>
@@ -39,7 +39,9 @@ import Button from '../atoms/Button.vue';
 import { onMounted, onUnmounted, ref } from 'vue';
 const isMenuOpen = ref(false);
 const toggleMenuOpen = () => {
-	isMenuOpen.value = !isMenuOpen.value;
+	if (window.innerWidth < 1024) {
+		isMenuOpen.value = !isMenuOpen.value;
+	}
 };
 
 const navLinks = [
@@ -103,7 +105,7 @@ header.navbar-container {
 }
 nav.header-navbar {
 	display: flex;
-	width: calc(100% - 4rem);
+	width: calc(100% - 6rem);
 	max-width: 1360px;
 	flex-wrap: wrap;
 	padding: 1rem 0;

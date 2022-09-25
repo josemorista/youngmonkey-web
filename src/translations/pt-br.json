@@ -33,7 +33,16 @@
 		"content2_part1": "Para todos os desenvolvedores",
 		"content2_part2": "as transferências de Lottie são super fáceis. Seja Web, iOS ou Android."
 	},
+	"your_video": {
+		"title_part1": "Seu",
+		"title_part2": "na Young Monkey é",
+		"content_part1": "Seu produto e seu público são únicos, logo sua divulgação também precisa ser.",
+		"content_part2": "Com originalidade, criatividade e elaboração em cada vídeo realizado, nosso portfólio tem trabalhos elaborados desde o roteiro à entrega, para os mais variados tipos de propostas.",
+		"button": "Quero um vídeo"
+	},
 	"global": {
-		"contact": "contato"
+		"contact": "contato",
+		"video": "vídeo",
+		"creative": "criativo"
 	}
 }

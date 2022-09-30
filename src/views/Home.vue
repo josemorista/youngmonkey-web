@@ -9,6 +9,7 @@
 			<YourVideo />
 		</div>
 	</main>
+	<Footer />
 </template>
 
 <script setup lang="ts">
@@ -18,6 +19,7 @@ import MethodAndOriginality from '../components/templates/MethodAndOriginality.v
 import MultiPlatform from '../components/templates/MultiPlatform.vue';
 import Recommendations from '../components/templates/Recommendations.vue';
 import YourVideo from '../components/templates/YourVideo.vue';
+import Footer from '../components/organisms/Footer.vue';
 </script>
 
 <style lang="scss" scoped>

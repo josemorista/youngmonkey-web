@@ -12,7 +12,7 @@
 			<div :class="{ 'nav-links': true, hidden: !isMenuOpen }">
 				<ul>
 					<li v-for="navlink of navLinks" v-once :key="navlink.to" @click="toggleMenuOpen">
-						<a :href="navlink.to" class="nav-link-anchor">{{ $t(`navbar.${navlink.text}`) }}</a>
+						<a :href="navlink.to" class="nav-link-anchor">{{ $t(navlink.text) }}</a>
 					</li>
 				</ul>
 				<Button variant="secondary"> {{ $t('global.contact') }} </Button>
@@ -47,15 +47,15 @@ const toggleMenuOpen = () => {
 const navLinks = [
 	{
 		to: '#hero',
-		text: 'home',
+		text: 'navbar.home',
 	},
 	{
 		to: '#method-and-originality',
-		text: 'services',
+		text: 'navbar.services',
 	},
 	{
 		to: '#about',
-		text: 'about',
+		text: 'global.about',
 	},
 ];
 

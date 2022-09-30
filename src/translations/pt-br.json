@@ -1,7 +1,6 @@
 {
 	"navbar": {
 		"services": "Serviços",
-		"about": "Sobre",
 		"home": "Home"
 	},
 	"hero": {
@@ -40,9 +39,16 @@
 		"content_part2": "Com originalidade, criatividade e elaboração em cada vídeo realizado, nosso portfólio tem trabalhos elaborados desde o roteiro à entrega, para os mais variados tipos de propostas.",
 		"button": "Quero um vídeo"
 	},
+	"footer": {
+		"follow_us": "siga a gente",
+		"about": "Somos um estúdio de vídeo e animação situado no Rio de Janeiro, estamos juntos e realizando projetos animados e criativos desde 2018.",
+		"copyright": "Copyright 2022 © Todos os direitos reservados. Design por Young Monkey"
+	},
 	"global": {
 		"contact": "contato",
 		"video": "vídeo",
-		"creative": "criativo"
+		"creative": "criativo",
+		"about": "Sobre",
+		"contact_us": "Fale conosco"
 	}
 }

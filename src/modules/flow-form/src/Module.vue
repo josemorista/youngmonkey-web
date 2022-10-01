@@ -21,6 +21,8 @@ const completedPercentage = toRef(formStepStore, 'completedPercentage');
 <style lang="scss">
 .flow-form {
 	// Global styles
+	background-color: var(--color-white);
+
 	h1 {
 		font-size: 4rem;
 		color: var(--color-primary);

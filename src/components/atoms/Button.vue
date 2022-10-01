@@ -17,6 +17,10 @@ button.btn {
 	border-radius: 8px;
 	font-weight: 700;
 	text-transform: uppercase;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.8rem;
 
 	cursor: pointer;
 
@@ -28,6 +32,9 @@ button.btn {
 
 	&.secondary {
 		color: var(--color-primary);
+		span {
+			color: var(--color-primary);
+		}
 		background-color: var(--color-secondary);
 	}
 }

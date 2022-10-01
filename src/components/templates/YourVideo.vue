@@ -19,7 +19,7 @@
 				<p>
 					{{ $t('your_video.content_part2') }}
 				</p>
-				<Button variant="secondary">{{ $t('your_video.button') }}</Button>
+				<Button variant="secondary" @click="openFlowForm">{{ $t('your_video.button') }}</Button>
 			</div>
 		</div>
 		<ul>
@@ -31,10 +31,13 @@
 </template>
 
 <script setup lang="ts">
+import { useFlowForm } from '../../compositors/useFlowForm';
 import { onMounted, ref } from 'vue';
 import Button from '../atoms/Button.vue';
 const activeVideo = ref(0);
 const videoRef = ref<HTMLVideoElement>();
+
+const { openFlowForm } = useFlowForm();
 
 const setActiveVideo = (index: number) => {
 	activeVideo.value = index;

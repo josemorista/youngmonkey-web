@@ -15,7 +15,7 @@
 						<a :href="navlink.to" class="nav-link-anchor">{{ $t(navlink.text) }}</a>
 					</li>
 				</ul>
-				<Button variant="secondary"> {{ $t('global.contact') }} </Button>
+				<Button variant="secondary" @click="openFlowForm"> {{ $t('global.contact') }} </Button>
 			</div>
 			<div class="social-links">
 				<a
@@ -37,12 +37,14 @@ import { LottieAnimation } from 'lottie-web-vue';
 import MenuButton from '../atoms/MenuButton.vue';
 import Button from '../atoms/Button.vue';
 import { onMounted, onUnmounted, ref } from 'vue';
+import { useFlowForm } from '../../compositors/useFlowForm';
 const isMenuOpen = ref(false);
 const toggleMenuOpen = () => {
 	if (window.innerWidth < 1024) {
 		isMenuOpen.value = !isMenuOpen.value;
 	}
 };
+const { openFlowForm } = useFlowForm();
 
 const navLinks = [
 	{

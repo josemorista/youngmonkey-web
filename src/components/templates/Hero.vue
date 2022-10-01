@@ -18,17 +18,20 @@
 			<p class="description">
 				{{ $t('hero.description') }}
 			</p>
-			<Button variant="secondary">{{ $t('hero.speak_to_a_specialist') }}</Button>
+			<Button variant="secondary" @click="openFlowForm">{{ $t('hero.speak_to_a_specialist') }}</Button>
 		</div>
 	</section>
 </template>
 
 <script setup lang="ts">
 import { LottieAnimation } from 'lottie-web-vue';
+import { useFlowForm } from '../../compositors/useFlowForm';
 import { onMounted, onUnmounted, ref } from 'vue';
 import Button from '../atoms/Button.vue';
 const typewriter1 = ref<HTMLSpanElement>();
 const typewriter2 = ref<HTMLSpanElement>();
+
+const { openFlowForm } = useFlowForm();
 
 const toggleAnimation = (el: HTMLSpanElement) => {
 	if (el.classList.contains('backwards')) {

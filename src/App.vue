@@ -1,9 +1,11 @@
 <template>
 	<Home />
+	<FlowFormContainer />
 </template>
 
 <script setup lang="ts">
 import Home from './views/Home.vue';
+import FlowFormContainer from './components/templates/FlowFormContainer.vue';
 </script>
 
 <style lang="scss">

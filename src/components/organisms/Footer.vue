@@ -40,7 +40,12 @@
 					<a href=""> contato@youngmonkey.com </a>
 					<img src="../../assets/icons/arrow.svg" alt="arrow" />
 				</div>
-				<Button variant="secondary">{{ $t('global.contact_us') }}</Button>
+				<Button variant="secondary">
+					<img src="../../assets/icons/whatsapp-footer.svg" alt="whatsapp" />
+					<span>
+						{{ $t('global.contact_us') }}
+					</span>
+				</Button>
 			</section>
 
 			<section class="footer-language-selector">
@@ -104,7 +109,6 @@ footer {
 			'copyright copyright';
 
 		p,
-		span,
 		a {
 			color: var(--color-white);
 		}
@@ -185,6 +189,18 @@ footer {
 				grid-area: contact;
 				justify-self: center;
 				text-align: center;
+
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+
+				button {
+					img {
+						width: 32px;
+						height: 32px;
+					}
+				}
 			}
 
 			&-language-selector {
@@ -208,6 +224,7 @@ footer {
 			grid-template-columns: 42rem 30rem 1fr;
 			grid-template-rows: repeat(3, auto);
 			column-gap: 4.8rem;
+			padding: 6.4rem 0;
 
 			grid-template-areas:
 				'about follow-us logo'
@@ -221,6 +238,7 @@ footer {
 
 				&-language-selector {
 					align-self: flex-end;
+					margin-bottom: 0;
 				}
 
 				&-copyright {

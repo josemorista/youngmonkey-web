@@ -37,7 +37,7 @@
 			<section class="footer-contact">
 				<div class="contact-mail">
 					<img src="../../assets/icons/arrow.svg" alt="arrow" />
-					<a href=""> contato@youngmonkey.com </a>
+					<a href="mailto:contato@youngmonkey.com"> contato@youngmonkey.com </a>
 					<img src="../../assets/icons/arrow.svg" alt="arrow" />
 				</div>
 				<Button variant="secondary">
@@ -49,7 +49,15 @@
 			</section>
 
 			<section class="footer-language-selector">
-				<p>Português brasileiro</p>
+				<Dropdown
+					variant="white"
+					label="Mudar o idioma"
+					:options="locales"
+					@onValueSelection="setLocale"
+					:current="locale"
+				>
+					<template v-slot:pre> <img src="../../assets/icons/internet.svg" alt="internet" /> </template>
+				</Dropdown>
 			</section>
 
 			<section class="footer-copyright">
@@ -62,7 +70,18 @@
 </template>
 
 <script setup lang="ts">
+import { LANGUAGES_DICT } from '../../constants';
+import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import Button from '../atoms/Button.vue';
+import Dropdown from '../atoms/Dropdown.vue';
+
+const { locale, availableLocales } = useI18n();
+const locales = computed(() => availableLocales.map((el) => ({ value: el, option: LANGUAGES_DICT[el] })));
+const setLocale = (newLocale: string) => {
+	locale.value = newLocale;
+};
+
 const socialLinks = [
 	{
 		icon: 'facebook.svg',
@@ -95,7 +114,8 @@ footer {
 	> main {
 		display: grid;
 		width: calc(100% - 4rem);
-		padding: 3rem 0;
+		padding-top: 3rem;
+		padding-bottom: 6rem;
 		max-width: 1360px;
 
 		grid-template-columns: 1fr 1fr;
@@ -207,6 +227,7 @@ footer {
 				grid-area: language-selector;
 				justify-self: center;
 				margin: 6rem 0;
+				min-width: 20rem;
 			}
 
 			&-copyright {

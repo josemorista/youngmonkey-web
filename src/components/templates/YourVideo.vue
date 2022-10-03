@@ -1,5 +1,5 @@
 <template>
-	<div class="your-video">
+	<div class="your-video" id="about">
 		<div class="highlight-and-content">
 			<video autoplay="true" muted="true" loop="true" controls="true" ref="videoRef"></video>
 			<div class="highlight-content">

@@ -6,11 +6,11 @@
 		<div class="hero-texts">
 			<h1 ref="text1Ref">
 				{{ $t('hero.videos') }}
-				<span class="typewriter forwards" ref="typewriter1"> {{ $t('hero.creatives') }}</span>
+				<span class="typewriter forwards" ref="typewriter1"> {{ text1Options[currentText1] }}</span>
 			</h1>
 			<h1>
 				{{ $t('hero.for_your') }}
-				<span class="typewriter forwards" ref="typewriter2"> {{ $t('hero.ideas') }}</span>
+				<span class="typewriter forwards" ref="typewriter2"> {{ text2Options[currentText2] }}</span>
 			</h1>
 			<p class="do-different">
 				{{ $t('hero.do_different') }}
@@ -28,10 +28,23 @@ import { LottieAnimation } from 'lottie-web-vue';
 import { useFlowForm } from '../../compositors/useFlowForm';
 import { onMounted, onUnmounted, ref } from 'vue';
 import Button from '../atoms/Button.vue';
+import { useI18n } from 'vue-i18n';
 const typewriter1 = ref<HTMLSpanElement>();
 const typewriter2 = ref<HTMLSpanElement>();
-
 const { openFlowForm } = useFlowForm();
+const { t } = useI18n();
+
+const text1Options = [t('hero.creatives'), t('hero.incredible')];
+const text2Options = [t('hero.ideas'), t('hero.stories')];
+
+const currentText1 = ref(0);
+const currentText2 = ref(0);
+
+const getNextText = (current: number, options: Array<string>) => {
+	const next = current + 1;
+	if (next >= options.length) return 0;
+	return next;
+};
 
 const toggleAnimation = (el: HTMLSpanElement) => {
 	if (el.classList.contains('backwards')) {
@@ -41,18 +54,24 @@ const toggleAnimation = (el: HTMLSpanElement) => {
 	el.classList.replace('forwards', 'backwards');
 };
 
-let intervalHandler: number;
+let animationIntervalHandler: number;
+let textsIntervalHandler: number;
 onMounted(() => {
-	intervalHandler = setInterval(() => {
+	animationIntervalHandler = setInterval(() => {
 		if (typewriter1.value && typewriter2.value) {
 			toggleAnimation(typewriter1.value);
 			toggleAnimation(typewriter2.value);
 		}
 	}, 2500);
+	textsIntervalHandler = setInterval(() => {
+		currentText1.value = getNextText(currentText1.value, text1Options);
+		currentText2.value = getNextText(currentText2.value, text2Options);
+	}, 5000);
 });
 
 onUnmounted(() => {
-	if (intervalHandler) clearInterval(intervalHandler);
+	if (animationIntervalHandler) clearInterval(animationIntervalHandler);
+	if (textsIntervalHandler) clearInterval(textsIntervalHandler);
 });
 </script>
 
@@ -121,7 +140,7 @@ onUnmounted(() => {
 	}
 }
 .hero-texts {
-	max-width: 50rem;
+	max-width: 56rem;
 	h1 {
 		text-transform: uppercase;
 		color: var(--color-primary);

@@ -51,12 +51,13 @@
 			<section class="footer-language-selector">
 				<Dropdown
 					variant="white"
-					label="Mudar o idioma"
+					:label="changeLanguage"
 					:options="locales"
 					@onValueSelection="setLocale"
 					:current="locale"
 				>
 					<template v-slot:pre> <img src="../../assets/icons/internet.svg" alt="internet" /> </template>
+					<template v-slot:pos><img src="../../assets/icons/chevron-down.svg" alt="arrow-down" /></template>
 				</Dropdown>
 			</section>
 
@@ -76,11 +77,13 @@ import { useI18n } from 'vue-i18n';
 import Button from '../atoms/Button.vue';
 import Dropdown from '../atoms/Dropdown.vue';
 
-const { locale, availableLocales } = useI18n();
+const { locale, availableLocales, t } = useI18n();
 const locales = computed(() => availableLocales.map((el) => ({ value: el, option: LANGUAGES_DICT[el] })));
 const setLocale = (newLocale: string) => {
 	locale.value = newLocale;
 };
+
+const changeLanguage = computed(() => t('footer.change_language'));
 
 const socialLinks = [
 	{

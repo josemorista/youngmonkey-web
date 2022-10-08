@@ -2,10 +2,12 @@
 	<div class="dropdown-container">
 		<slot name="pre"></slot>
 		<span :class="`current-selected ${variant}`" @click="toggleIsOpen">{{ currentSelected?.option }}</span>
+		<slot name="pos"></slot>
 		<div class="dropdown-list" v-if="isOpen">
 			<p class="label" v-if="label">{{ label }}</p>
 			<ul>
 				<li v-for="option of options" :key="option.value" @click="onOptionClick(option.value)">
+					<img src="../../assets/icons/check.svg" v-if="option.value === current" />
 					{{ option.option }}
 				</li>
 			</ul>
@@ -81,6 +83,10 @@ div.dropdown-container {
 			cursor: pointer;
 			& + li {
 				margin-top: 2.4rem;
+			}
+
+			img {
+				margin-right: 1rem;
 			}
 		}
 	}

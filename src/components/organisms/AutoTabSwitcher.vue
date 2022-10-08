@@ -1,5 +1,5 @@
 <template>
-	<div class="auto-tab">
+	<div class="auto-tab" v-if="activeTab >= 0">
 		<ul>
 			<li v-for="(tab, index) in tabs" :key="`auto-tab-${index}`" @click="setCurrentTab(index)">
 				<Tab
@@ -33,7 +33,7 @@ import { useI18n } from 'vue-i18n';
 import { LottieAnimation } from 'lottie-web-vue';
 import Tab from '../molecules/Tab.vue';
 
-const activeTab = ref(0);
+const activeTab = ref(-1);
 const { t } = useI18n();
 
 const tabs = computed(() => [

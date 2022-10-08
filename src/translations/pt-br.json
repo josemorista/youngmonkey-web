@@ -1,4 +1,29 @@
 {
+	"flow-form": {
+		"type_here": "Digite aqui...",
+		"type_your_name": "Qual seu nome?*",
+		"enterprise_question": "Oi {name}, e qual sua empresa?",
+		"services_question": "Com quais serviços podemos te ajudar?*",
+		"choose_services": "Escolha um ou mais serviços",
+		"services": {
+			"animation_motion": "Animação/ Motion Graphics",
+			"video_edition": "Edição de Vídeo",
+			"sound_design": "Sound Design",
+			"screenplay": "Roteiro",
+			"narration": "Narração / Locução",
+			"ux": "UX e UI Design"
+		},
+		"duration_question": "Qual a duração estimada do seu vídeo?*",
+		"minute": "minuto",
+		"minutes": "minutos",
+		"reference_img_question": "Possui algum vídeo ou imagem de referência?",
+		"contact_question": "Digite seu telefone ou whtasapp para entrarmos em contato.*",
+		"other_info_question": "Pronto {name}, tem algo mais que você queira nos falar?",
+		"type_your_answer_here": "Digite sua resposta aqui.",
+		"submit": "Enviar",
+		"thanks": "Muito obrigado {name}!",
+		"wait_for_contact": "Já estamos com seus dados e logo entraremos em contato."
+	},
 	"navbar": {
 		"services": "Serviços",
 		"home": "Home"

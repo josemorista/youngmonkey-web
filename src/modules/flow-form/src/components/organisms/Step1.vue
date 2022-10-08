@@ -4,8 +4,8 @@
 			<Input
 				v-model="formData.name"
 				type="text"
-				label="Qual seu nome?*"
-				placeholder="Digite aqui..."
+				:label="label"
+				:placeholder="placeholder"
 			/>
 			<Button :disabled="isFormDisabled" type="submit"> OK {{ '>' }} </Button>
 		</form>
@@ -18,6 +18,12 @@ import Step from '../molecules/Step.vue';
 import Button from '../atoms/Button.vue';
 import { computed, defineEmits } from 'vue';
 import { useFormData } from '../../compositors/formData';
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n();
+
+const label = computed(() => t('flow-form.type_your_name'));
+const placeholder = computed(() => t('flow-form.type_here'));
+
 const formData = useFormData();
 const emitter = defineEmits<{
 	(event: 'onStepSubmit'): void;

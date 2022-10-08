@@ -2,10 +2,9 @@
 	<main class="success">
 		<img class="logo" src="../../assets/logo.svg" alt="logo-young-monkey" />
 		<h1>
-			Muito obrigado
-			{{ formData.name }}!
+			{{ $t('flow-form.thanks', { name: formData.name }) }}
 		</h1>
-		<h3>Já estamos com seus dados e logo entraremos em contato.</h3>
+		<h3>{{ $t('flow-form.wait_for_contact') }}</h3>
 	</main>
 </template>
 

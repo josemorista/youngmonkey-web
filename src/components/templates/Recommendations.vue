@@ -22,7 +22,7 @@ const recommendations = [
 	new Recommendation(
 		'Working with YoungMonkey was great. They created a very professional video in a short time frame with very little guidance from me. Updates and improvements were very quickly integrated. I would definitely work with YongMonkey again.',
 		new RecommendationAuthor(
-			'Brian Arnott',
+			'Diego Silva',
 			'brian.png',
 			'Director, Dolby Australia',
 			new Enterprise('Dolby', 'dolby.png')

@@ -9,12 +9,20 @@
 					:content="tab.content"
 				/>
 				<div :class="{ 'tab-image': true, active: activeTab === index }">
-					<img src="" alt="" />
+					<LottieAnimation
+						:loop="true"
+						:autoPlay="true"
+						:animationData="require(`../../assets/lottie/${tabs[activeTab]?.animation}`)"
+					/>
 				</div>
 			</li>
 		</ul>
 		<div class="current-tab-image">
-			<img :src="tabs[activeTab]?.image" :alt="activeTab + ''" />
+			<LottieAnimation
+				:loop="true"
+				:autoPlay="true"
+				:animationData="require(`../../assets/lottie/${tabs[activeTab]?.animation}`)"
+			/>
 		</div>
 	</div>
 </template>
@@ -22,9 +30,10 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { LottieAnimation } from 'lottie-web-vue';
 import Tab from '../molecules/Tab.vue';
-const activeTab = ref(-1);
 
+const activeTab = ref(0);
 const { t } = useI18n();
 
 const tabs = computed(() => [
@@ -32,25 +41,25 @@ const tabs = computed(() => [
 		transition: 5,
 		title: t('method_and_originality.auto_tab.tab1_title'),
 		content: t('method_and_originality.auto_tab.tab1_content'),
-		image: 'red',
+		animation: 'hero-rocket.json',
 	},
 	{
 		transition: 5,
 		title: t('method_and_originality.auto_tab.tab2_title'),
 		content: t('method_and_originality.auto_tab.tab2_content'),
-		image: 'red',
+		animation: 'hero-rocket.json',
 	},
 	{
 		transition: 5,
 		title: t('method_and_originality.auto_tab.tab3_title'),
 		content: t('method_and_originality.auto_tab.tab3_content'),
-		image: 'red',
+		animation: 'hero-rocket.json',
 	},
 	{
 		transition: 5,
 		title: t('method_and_originality.auto_tab.tab4_title'),
 		content: t('method_and_originality.auto_tab.tab4_content'),
-		image: 'red',
+		animation: 'hero-rocket.json',
 	},
 ]);
 
@@ -106,7 +115,6 @@ onUnmounted(() => {
 		> * {
 			width: 28rem;
 			height: 28rem;
-			background-color: #d9d9d9;
 		}
 
 		&.active {
@@ -143,7 +151,6 @@ onUnmounted(() => {
 			height: 44rem;
 			max-height: 44rem;
 			max-width: 44rem;
-			background-color: #d9d9d9;
 			img {
 				width: 100%;
 				height: 100%;

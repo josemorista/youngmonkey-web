@@ -15,8 +15,7 @@ const i18n = createI18n({
 
 const locales: Array<string> = i18n.global.availableLocales;
 if (locales.includes(navigator.language)) {
-	//@ts-ignore
-	i18n.global.locale.value = navigator.language;
+	i18n.global.locale.value = navigator.language as any;
 }
 
 createApp(App).use(i18n).mount('#app');

@@ -3,17 +3,20 @@ import App from './App.vue';
 import { createI18n } from 'vue-i18n';
 
 import ptBr from './translations/pt-br.json';
-import { ALLOWED_LANGUAGES } from './constants';
-
-const defaultLocale = ALLOWED_LANGUAGES.includes(navigator.language) ? navigator.language : ALLOWED_LANGUAGES[0];
 
 const i18n = createI18n({
-	locale: defaultLocale,
-	fallbackLocale: ALLOWED_LANGUAGES[0],
+	locale: 'pt-br',
+	fallbackLocale: 'pt-br',
 	legacy: false,
 	messages: {
 		'pt-br': ptBr,
 	},
 });
+
+const locales: Array<string> = i18n.global.availableLocales;
+if (locales.includes(navigator.language)) {
+	//@ts-ignore
+	i18n.global.locale.value = navigator.language;
+}
 
 createApp(App).use(i18n).mount('#app');

@@ -3,5 +3,3 @@ export const LANGUAGES_DICT: Record<string, string> = {
 	'pt-br': 'Português brasileiro',
 	es: 'Espanhol',
 };
-
-export const ALLOWED_LANGUAGES = ['pt-br'];

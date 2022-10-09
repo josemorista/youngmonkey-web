@@ -1,0 +1,24 @@
+name: 'Publish on Netlify'
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  publish:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+      - name: 'Install dependencies'
+        run: 'npm ci'
+      - name: 'Build application'
+        run: 'npm run build'
+      - name: 'Create artifact'
+        run: 'zip -r website.zip dist'
+      - name: 'Deploy to Netlify'
+        run: |
+          'curl -H "Content-Type: application/zip" -H "Authorization: Bearer ${{secrets.NETLIFY_ACCESS_TOKEN}}" --data-binary "@website.zip" https://api.netlify.com/api/v1/sites/${{secrets.NETLIFY_SITE_ID}}/deploys'

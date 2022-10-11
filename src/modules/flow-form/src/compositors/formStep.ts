@@ -20,23 +20,24 @@ const onStepSubmit = async (step: number) => {
 
 	if (step === 7) {
 		const formData = useFormData();
-		const body = new FormData();
-		body.append('entry.772671732', formData.name);
-		body.append('entry.1777026839', formData.enterprise);
-		for (const option of formData.contractOptions) {
-			body.append('entry.1047964429', option);
-		}
-		body.append('entry.1056916052', formData.referenceImg);
-		body.append('entry.1567459913', formData.requestedDuration);
-		body.append('entry.1703649672', formData.phone);
-		body.append('entry.1162429681', formData.other);
 		try {
 			await fetch(
-				'https://docs.google.com/forms/d/e/1FAIpQLScr66UhBINhZ3JCzq3pKUJWWC7e2rqFwWQwg0SXnjkaWil9QA/formResponse',
+				'https://kc4d6khl8f.execute-api.us-east-1.amazonaws.com/v1/notify',
 				{
 					method: 'POST',
-					body,
-					mode: 'no-cors',
+					body: JSON.stringify({
+						clientName: formData.name,
+						contactPhone: Number(formData.phone.replace(/\D/g, '')),
+						enterprise: formData.enterprise,
+						duration: formData.requestedDuration,
+						reference: formData.referenceImg,
+						briefing: formData.other,
+						services: formData.contractOptions,
+					}),
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: '2b7a2839e8067292e9eed9c263ef67f7',
+					},
 				}
 			);
 		} catch (error) {

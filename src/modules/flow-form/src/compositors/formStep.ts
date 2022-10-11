@@ -22,7 +22,7 @@ const onStepSubmit = async (step: number) => {
 		const formData = useFormData();
 		try {
 			await fetch(
-				'https://kc4d6khl8f.execute-api.us-east-1.amazonaws.com/v1/notify',
+				'https://kc4d6khl8f.execute-api.us-east-1.amazonaws.com/v1/orders',
 				{
 					method: 'POST',
 					body: JSON.stringify({

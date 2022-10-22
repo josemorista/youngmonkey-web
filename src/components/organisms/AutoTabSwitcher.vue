@@ -41,25 +41,25 @@ const tabs = computed(() => [
 		transition: 5,
 		title: t('method_and_originality.auto_tab.tab1_title'),
 		content: t('method_and_originality.auto_tab.tab1_content'),
-		animation: 'hero-rocket.json',
+		animation: 'roteiro.json',
 	},
 	{
 		transition: 5,
 		title: t('method_and_originality.auto_tab.tab2_title'),
 		content: t('method_and_originality.auto_tab.tab2_content'),
-		animation: 'hero-rocket.json',
+		animation: 'filmagem.json',
 	},
 	{
 		transition: 5,
 		title: t('method_and_originality.auto_tab.tab3_title'),
 		content: t('method_and_originality.auto_tab.tab3_content'),
-		animation: 'hero-rocket.json',
+		animation: 'edicao.json',
 	},
 	{
 		transition: 5,
 		title: t('method_and_originality.auto_tab.tab4_title'),
 		content: t('method_and_originality.auto_tab.tab4_content'),
-		animation: 'hero-rocket.json',
+		animation: 'animacao.json',
 	},
 ]);
 

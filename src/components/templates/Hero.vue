@@ -5,11 +5,11 @@
 		</div>
 		<div class="hero-texts">
 			<h1 ref="text1Ref">
-				{{ $t('hero.videos') }}
+				<!--{{ $t('hero.videos') }}-->
 				<span class="typewriter forwards" ref="typewriter1"> {{ text1Options[currentText1] }}</span>
 			</h1>
 			<h1>
-				{{ $t('hero.for_your') }}
+				<!--{{ $t('hero.for_your') }}-->
 				<span class="typewriter forwards" ref="typewriter2"> {{ text2Options[currentText2] }}</span>
 			</h1>
 			<p class="do-different">
@@ -167,7 +167,7 @@ onUnmounted(() => {
 	}
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
 	.hero {
 		margin-top: 20rem;
 		flex-direction: row-reverse;

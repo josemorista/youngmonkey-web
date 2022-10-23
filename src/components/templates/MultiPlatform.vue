@@ -22,8 +22,8 @@
 <script setup lang="ts">
 import { LottieAnimation } from 'lottie-web-vue';
 import { onMounted, onUnmounted, ref } from 'vue';
-import desktopAnimation from '../../assets/lottie/mult-desktop.json';
-import mobileAnimation from '../../assets/lottie/mult-mobile.json';
+import desktopAnimation from '../../assets/lottie/mult-plataform.json';
+import mobileAnimation from '../../assets/lottie/mult-plataform.json';
 
 const currentAnimation = ref<'mobile' | 'desktop'>('desktop');
 
@@ -50,7 +50,6 @@ section.mult-platform {
 	padding: 4rem 3.6rem;
 	border-radius: 16px;
 	margin-top: 8rem;
-	margin-bottom: 50%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -61,7 +60,7 @@ section.mult-platform {
 		color: var(--color-secondary);
 		font-family: 'Bebas Neue';
 		margin-bottom: 3.2rem;
-		max-width: 44rem;
+		max-width: 68rem;
 		text-align: center;
 	}
 
@@ -78,20 +77,17 @@ section.mult-platform {
 		width: 100%;
 		max-width: 60rem;
 		margin-top: 3.2rem;
-		margin-bottom: -50%;
 	}
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
 	section.mult-platform {
-		margin-bottom: 30%;
 		h2 {
 			font-size: 7rem;
 		}
 
 		.img {
 			margin-top: 5rem;
-			margin-bottom: -30%;
 		}
 	}
 }

@@ -12,16 +12,18 @@
 					<LottieAnimation
 						:loop="true"
 						:autoPlay="true"
-						:animationData="require(`../../assets/lottie/${tabs[activeTab]?.animation}`)"
+						:animationData="require(`../../assets/lottie/${tab.animation}`)"
 					/>
 				</div>
 			</li>
 		</ul>
 		<div class="current-tab-image">
 			<LottieAnimation
+				v-for="tab in desktopAnimations"
+				:key="`desktop-tab-${tab.title}`"
 				:loop="true"
 				:autoPlay="true"
-				:animationData="require(`../../assets/lottie/${tabs[activeTab]?.animation}`)"
+				:animationData="require(`../../assets/lottie/${tab.animation}`)"
 			/>
 		</div>
 	</div>
@@ -41,27 +43,29 @@ const tabs = computed(() => [
 		transition: 5,
 		title: t('method_and_originality.auto_tab.tab1_title'),
 		content: t('method_and_originality.auto_tab.tab1_content'),
-		animation: 'hero-rocket.json',
+		animation: 'roteiro.json',
 	},
 	{
 		transition: 5,
 		title: t('method_and_originality.auto_tab.tab2_title'),
 		content: t('method_and_originality.auto_tab.tab2_content'),
-		animation: 'hero-rocket.json',
+		animation: 'filmagem.json',
 	},
 	{
 		transition: 5,
 		title: t('method_and_originality.auto_tab.tab3_title'),
 		content: t('method_and_originality.auto_tab.tab3_content'),
-		animation: 'hero-rocket.json',
+		animation: 'edicao.json',
 	},
 	{
 		transition: 5,
 		title: t('method_and_originality.auto_tab.tab4_title'),
 		content: t('method_and_originality.auto_tab.tab4_content'),
-		animation: 'hero-rocket.json',
+		animation: 'animacao.json',
 	},
 ]);
+
+const desktopAnimations = computed(() => tabs.value.filter((_, i) => i === activeTab.value));
 
 let timeoutHandler: number;
 const setNextTab = () => {
@@ -127,7 +131,7 @@ onUnmounted(() => {
 	}
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
 	.auto-tab {
 		display: flex;
 		align-items: center;

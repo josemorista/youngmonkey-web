@@ -35,26 +35,26 @@
 		"speak_to_a_specialist": "Fale com um especialista",
 		"videos": "vídeos",
 		"creatives": "criativos",
-		"ideas": "ideias",
-		"stories": "histórias",
+		"ideas": "Vídeos",
+		"stories": "Edição",
 		"incredible": "incríveis"
 	},
 	"method_and_originality": {
 		"method_plus_originality": "MÉTODO + ORIGINALIDADE",
 		"content": "Toda a concepção do seu projeto, desde o roteiro até a pós produção, feito de maneira original e assertiva para impactar seu público-alvo.",
 		"auto_tab": {
-			"tab1_title": "Uma edição dinâmica para apresentar sua ideia",
-			"tab1_content": "O tom da sua mensagem é muito importante para acionar as emoções certas no seu público-alvo, e a edição é parte essencial desta construção",
-			"tab2_title": "Conquiste seu público através de Animações",
-			"tab2_content": "A animação torna seu vídeo muito mais divertido e engajante, passando informações de maneira bem mais efetiva",
-			"tab3_title": "É importante ter Roteiros originais e criativos",
-			"tab3_content": "Um bom roteiro é o que separa um vídeo inesquecível daquele que vai ser apenas mais um em meio a tantos outros",
-			"tab4_title": "Inovando a experiência do usuário através do Design",
-			"tab4_content": "Um bom design visa tornar a experiência do usuário mais intuitiva, facilitando toda a trajetória de quem utiliza sua plataforma ou aplicativo"
+			"tab1_title": "É importante ter Roteiros originais e criativos (Roteiro)",
+			"tab1_content": "Um bom roteiro é o que separa um vídeo inesquecível daquele que vai ser apenas mais um em meio a tantos outros.",
+			"tab2_title": "Capture sua ideia do seu jeito (Filmagem)",
+			"tab2_content": "Com uma equipe de filmagem você não depende da visão de outros para vender sua ideia, capture sua ideia à sua maneira e apresente ao mundo seu produto.",
+			"tab3_title": "Uma edição dinâmica para apresentar sua ideia (Edição)",
+			"tab3_content": "O tom da sua mensagem é muito importante para acionar as emoções certas no seu público-alvo, e a edição é parte essencial desta construção.",
+			"tab4_title": "Conquiste a atenção do seu público através de Animações (Animação)",
+			"tab4_content": "A animação torna seu vídeo muito mais divertido e engajante, passando informações de maneira bem mais efetiva."
 		}
 	},
 	"mult_platform": {
-		"title": "Suporte para multi plataformas",
+		"title": "Facilidade para viajar entre todas as plataformas",
 		"content1": "Através dos Lotties, animações podem ser incorporadas em seu site ou App, sendo muito mais leve quando comparado a sequências GIF e PNG, e não pixeliza.",
 		"content2_part1": "Para todos os desenvolvedores",
 		"content2_part2": "as transferências de Lottie são super fáceis. Seja Web, iOS ou Android."

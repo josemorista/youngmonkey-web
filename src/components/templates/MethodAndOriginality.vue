@@ -26,7 +26,7 @@ section.method-and-originality {
 	}
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
 	section.method-and-originality {
 		> h1 {
 			font-size: 8.4rem;

@@ -11,7 +11,7 @@ import { RecommendationAuthor } from '../../entities/RecommendationAuthor';
 import RecommendationCarousel from '../organisms/RecommendationCarousel.vue';
 const recommendations = [
 	new Recommendation(
-		'Working with YoungMonkey was great. They created a very professional video in a short time frame with very little guidance from me. Updates and improvements were very quickly integrated. I would definitely work with YongMonkey again.',
+		'Working with YoungMonkey was great. They created a very professional video in a short time frame with very little guidance from me. Updates and improvements were very quickly integrated. I would definitely work with Young Monkey again.',
 		new RecommendationAuthor(
 			'Brian Arnott',
 			'brian.png',
@@ -20,21 +20,12 @@ const recommendations = [
 		)
 	),
 	new Recommendation(
-		'Working with YoungMonkey was great. They created a very professional video in a short time frame with very little guidance from me. Updates and improvements were very quickly integrated. I would definitely work with YongMonkey again.',
+		'He went above and beyond to make this project work! My client had loads of reversions but Diego was a very good communicator, result driven and literally saved this project. One of the best suppliers ever encountered. On top of being super patient; and delivering ahead of time every single time.',
 		new RecommendationAuthor(
-			'Diego Silva',
-			'brian.png',
-			'Director, Dolby Australia',
-			new Enterprise('Dolby', 'dolby.png')
-		)
-	),
-	new Recommendation(
-		'Working with YoungMonkey was great. They created a very professional video in a short time frame with very little guidance from me. Updates and improvements were very quickly integrated. I would definitely work with YongMonkey again.',
-		new RecommendationAuthor(
-			'Brian Arnott',
-			'brian.png',
-			'Director, Dolby Australia',
-			new Enterprise('Dolby', 'dolby.png')
+			'Gregor Amon',
+			'gregor.png',
+			'Communication Director and Head of Production',
+			new Enterprise('Shadani Consulting', 'shadani.png')
 		)
 	),
 ];
@@ -42,12 +33,12 @@ const recommendations = [
 
 <style lang="scss" scoped>
 section.recommendations {
-	margin-top: 14rem;
+	margin-top: 8rem;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
 	section.recommendations {
-		margin-top: 24rem;
+		margin-top: 18rem;
 	}
 }
 </style>

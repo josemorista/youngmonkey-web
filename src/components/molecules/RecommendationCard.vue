@@ -109,7 +109,7 @@ div.recommendation-card {
 	}
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
 	div.recommendation-card {
 		padding: 4rem;
 

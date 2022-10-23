@@ -12,16 +12,18 @@
 					<LottieAnimation
 						:loop="true"
 						:autoPlay="true"
-						:animationData="require(`../../assets/lottie/${tabs[activeTab]?.animation}`)"
+						:animationData="require(`../../assets/lottie/${tab.animation}`)"
 					/>
 				</div>
 			</li>
 		</ul>
 		<div class="current-tab-image">
 			<LottieAnimation
+				v-for="tab in desktopAnimations"
+				:key="`desktop-tab-${tab.title}`"
 				:loop="true"
 				:autoPlay="true"
-				:animationData="require(`../../assets/lottie/${tabs[activeTab]?.animation}`)"
+				:animationData="require(`../../assets/lottie/${tab.animation}`)"
 			/>
 		</div>
 	</div>
@@ -62,6 +64,8 @@ const tabs = computed(() => [
 		animation: 'animacao.json',
 	},
 ]);
+
+const desktopAnimations = computed(() => tabs.value.filter((_, i) => i === activeTab.value));
 
 let timeoutHandler: number;
 const setNextTab = () => {
@@ -127,7 +131,7 @@ onUnmounted(() => {
 	}
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
 	.auto-tab {
 		display: flex;
 		align-items: center;

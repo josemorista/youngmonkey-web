@@ -40,7 +40,7 @@ import { onMounted, onUnmounted, ref } from 'vue';
 import { useFlowForm } from '../../compositors/useFlowForm';
 const isMenuOpen = ref(false);
 const toggleMenuOpen = () => {
-	if (window.innerWidth < 1024) {
+	if (window.innerWidth < 1200) {
 		isMenuOpen.value = !isMenuOpen.value;
 	}
 };
@@ -77,7 +77,7 @@ const socialLinks = [
 ];
 
 const resizeListener = () => {
-	if (window.innerWidth >= 1024) {
+	if (window.innerWidth >= 1200) {
 		isMenuOpen.value = true;
 	} else {
 		isMenuOpen.value = false;
@@ -178,7 +178,7 @@ nav.header-navbar {
 	}
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
 	nav.header-navbar {
 		justify-content: space-between;
 

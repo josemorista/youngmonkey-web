@@ -141,7 +141,7 @@ div.your-video {
 		}
 	}
 }
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
 	div.your-video {
 		div {
 			&.highlight-and-content {

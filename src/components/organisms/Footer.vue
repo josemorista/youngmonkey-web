@@ -242,7 +242,7 @@ footer {
 	}
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
 	footer {
 		> main {
 			grid-template-columns: 42rem 30rem 1fr;

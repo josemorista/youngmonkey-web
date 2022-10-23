@@ -167,7 +167,7 @@ onUnmounted(() => {
 	}
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
 	.hero {
 		margin-top: 20rem;
 		flex-direction: row-reverse;

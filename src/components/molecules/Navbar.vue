@@ -3,7 +3,7 @@
 		<nav class="header-navbar">
 			<div class="logo-and-menu">
 				<div class="logo">
-					<lottie-animation :loop="true" :animationData="require('../../assets/lottie/logo.json')" />
+					<dotlottie-player autoplay loop :src="logoAnimation" />
 				</div>
 				<div class="menu-button">
 					<MenuButton @click="toggleMenuOpen" />
@@ -33,11 +33,11 @@
 </template>
 
 <script setup lang="ts">
-import { LottieAnimation } from 'lottie-web-vue';
 import MenuButton from '../atoms/MenuButton.vue';
 import Button from '../atoms/Button.vue';
 import { onMounted, onUnmounted, ref } from 'vue';
 import { useFlowForm } from '../../compositors/useFlowForm';
+import logoAnimation from '../../assets/lottie/logo.json';
 const isMenuOpen = ref(false);
 const toggleMenuOpen = () => {
 	if (window.innerWidth < 1200) {

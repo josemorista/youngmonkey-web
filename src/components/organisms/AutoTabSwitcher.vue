@@ -9,22 +9,19 @@
 					:content="tab.content"
 				/>
 				<div :class="{ 'tab-image': true, active: activeTab === index }">
-					<LottieAnimation
-						:loop="true"
-						:autoPlay="true"
-						:animationData="require(`../../assets/lottie/${tab.animation}`)"
-					/>
+					<dotlottie-player autoplay loop :src="tab.animation"> </dotlottie-player>
 				</div>
 			</li>
 		</ul>
 		<div class="current-tab-image">
-			<LottieAnimation
+			<dotlottie-player
 				v-for="tab in desktopAnimations"
 				:key="`desktop-tab-${tab.title}`"
-				:loop="true"
-				:autoPlay="true"
-				:animationData="require(`../../assets/lottie/${tab.animation}`)"
-			/>
+				autoplay
+				loop
+				:src="tab.animation"
+			>
+			</dotlottie-player>
 		</div>
 	</div>
 </template>
@@ -32,8 +29,11 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { LottieAnimation } from 'lottie-web-vue';
 import Tab from '../molecules/Tab.vue';
+import roteiroAnimation from '../../assets/lottie/roteiro.json';
+import filmagemAnimation from '../../assets/lottie/filmagem.json';
+import edicaoAnimation from '../../assets/lottie/edicao.json';
+import animacaoAnimation from '../../assets/lottie/animacao.json';
 
 const activeTab = ref(-1);
 const { t } = useI18n();
@@ -43,30 +43,28 @@ const tabs = computed(() => [
 		transition: 5,
 		title: t('method_and_originality.auto_tab.tab1_title'),
 		content: t('method_and_originality.auto_tab.tab1_content'),
-		animation: 'roteiro.json',
+		animation: roteiroAnimation,
 	},
 	{
 		transition: 5,
 		title: t('method_and_originality.auto_tab.tab2_title'),
 		content: t('method_and_originality.auto_tab.tab2_content'),
-		animation: 'filmagem.json',
+		animation: filmagemAnimation,
 	},
 	{
 		transition: 5,
 		title: t('method_and_originality.auto_tab.tab3_title'),
 		content: t('method_and_originality.auto_tab.tab3_content'),
-		animation: 'edicao.json',
+		animation: edicaoAnimation,
 	},
 	{
 		transition: 5,
 		title: t('method_and_originality.auto_tab.tab4_title'),
 		content: t('method_and_originality.auto_tab.tab4_content'),
-		animation: 'animacao.json',
+		animation: animacaoAnimation,
 	},
 ]);
-
 const desktopAnimations = computed(() => tabs.value.filter((_, i) => i === activeTab.value));
-
 let timeoutHandler: number;
 const setNextTab = () => {
 	if (activeTab.value < tabs.value.length - 1) {

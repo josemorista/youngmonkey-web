@@ -1,7 +1,7 @@
 <template>
 	<div class="your-video" id="about">
 		<div class="highlight-and-content">
-			<video autoplay="true" muted="true" loop="true" controls="true" ref="videoRef"></video>
+			<video autoplay="false" loop="true" controls="true" ref="videoRef"></video>
 			<div class="highlight-content">
 				<h1>
 					{{ $t('your_video.title_part1') }}
@@ -57,7 +57,7 @@ const availableVideos = [
 	},
 	{
 		id: 2,
-		thumbnail: 'lila.gif',
+		thumbnail: 'lila.jpeg',
 		video: 'Vinheta Lila Liloca.mp4',
 	},
 	{

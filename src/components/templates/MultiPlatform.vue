@@ -11,38 +11,10 @@
 			{{ $t('mult_platform.content2_part2') }}
 		</p>
 		<div class="img">
-			<lottie-animation
-				:loop="true"
-				:animation-data="currentAnimation === 'desktop' ? desktopAnimation : mobileAnimation"
-			></lottie-animation>
+			<dotlottie-player autoplay loop :src="require('../../assets/lottie/mult-plataform.json')"> </dotlottie-player>
 		</div>
 	</section>
 </template>
-
-<script setup lang="ts">
-import { LottieAnimation } from 'lottie-web-vue';
-import { onMounted, onUnmounted, ref } from 'vue';
-import desktopAnimation from '../../assets/lottie/mult-plataform.json';
-import mobileAnimation from '../../assets/lottie/mult-plataform.json';
-
-const currentAnimation = ref<'mobile' | 'desktop'>('desktop');
-
-const resizeObserver = () => {
-	if (window.innerWidth < 1024) {
-		currentAnimation.value = 'mobile';
-	} else {
-		currentAnimation.value = 'desktop';
-	}
-};
-
-onMounted(() => {
-	document.addEventListener('resize', resizeObserver);
-});
-
-onUnmounted(() => {
-	document.removeEventListener('resize', resizeObserver);
-});
-</script>
 
 <style lang="scss" scoped>
 section.mult-platform {

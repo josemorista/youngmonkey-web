@@ -8,8 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@dotlottie/player-component": "^1.2.2",
     "core-js": "^3.8.3",
-    "lottie-web-vue": "^2.0.6",
     "vue": "^3.2.13",
     "vue-i18n": "^9.2.2"
   },

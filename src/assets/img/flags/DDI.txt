@@ -1,0 +1,57 @@
++213	Argélia
++54	Argentina
++297	Aruba
++61	Austrália
++994	Azerbaijão
++1	Bahamas
++880	Bangladesh
++55	Brasil
++1	Canadá
++238	Cabo Verde
++56	Chile
++86	China
++57	Colômbia
++506	Costa Rica
++420	República Tcheca
++45	Dinamarca
++20	Egipto
++49	Alemanha
++30	Grécia
++354	Islândia
++91	Índia
++98	Irã
++972	Israel
++39	Itália
++81	Japão
++962	Jordânia
++965	Kuwait
++961	Líbano
++218	Líbia
++60	Malásia
++230	Ilhas Mauricio
++52	México
++212	Marrocos
++977	Nepal
++64	Nova Zelândia
++47	Noruega
++92	Paquistão
++351	Portugal
++974	Qatar
++966	Arábia Saudita
++44	Escócia
++65	Singapura
++421	Eslováquia
++677	Ilhas Salomão
++27	África do Sul
++82	Coreia do Sul
++34	Espanha
++94	Sri Lanka
++41	Suíça
++963	Síria
++66	Tailândia
++90	Turquia
++966	Arábia Saudita
++44	Reino Unido
++1	Estados Unidos
++84	Vietnã
++263	Zimbábue

@@ -40,7 +40,7 @@
 
 <script setup lang="ts">
 import { useFlowForm } from '../../compositors/useFlowForm';
-import { ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import Button from '../atoms/Button.vue';
 const activeVideo = ref(0);
 const isFirstInteraction = ref(true);
@@ -82,6 +82,23 @@ const availableVideos = [
 			'https://player.vimeo.com/video/736636644?h=964706a1ae&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
 	},
 ];
+
+let observer: IntersectionObserver;
+onMounted(() => {
+	observer = new IntersectionObserver((entries) => {
+		if (isFirstInteraction.value) {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					setActiveVideo(0);
+				}
+			});
+		}
+	});
+	if (videoRef.value) observer.observe(videoRef.value);
+});
+onUnmounted(() => {
+	observer.disconnect();
+});
 </script>
 
 <style lang="scss">

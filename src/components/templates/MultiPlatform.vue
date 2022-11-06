@@ -18,6 +18,9 @@
 
 <style lang="scss" scoped>
 section.mult-platform {
+	background-image: url('../../assets/img/Mult-Mobile.png');
+	background-position: center center;
+	background-size: contain;
 	background-color: var(--color-primary);
 	padding: 4rem 3.6rem;
 	border-radius: 16px;
@@ -54,6 +57,7 @@ section.mult-platform {
 
 @media (min-width: 1200px) {
 	section.mult-platform {
+		background-image: url('../../assets/img/Mult-Desktop.png');
 		h2 {
 			font-size: 7rem;
 		}

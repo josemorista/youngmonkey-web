@@ -1,7 +1,15 @@
 <template>
 	<div class="your-video" id="about">
 		<div class="highlight-and-content">
-			<video autoplay="false" loop="true" controls="true" ref="videoRef"></video>
+			<iframe
+				ref="videoRef"
+				:src="`${availableVideos[activeVideo].video}&loop=1&autoplay=1`"
+				frameborder="0"
+				allow="autoplay; loop; fullscreen; picture-in-picture"
+				title="presentation"
+				allowfullscreen
+			></iframe>
+
 			<div class="highlight-content">
 				<h1>
 					{{ $t('your_video.title_part1') }}
@@ -24,7 +32,7 @@
 		</div>
 		<ul>
 			<li v-for="(videoOption, index) in availableVideos" :key="videoOption.id" @click="setActiveVideo(index)">
-				<img :src="require(`../../assets/img/thumbnails/${videoOption.thumbnail}`)" alt="video option" />
+				<img :src="videoOption.thumbnail" alt="video option" />
 			</li>
 		</ul>
 	</div>
@@ -35,14 +43,13 @@ import { useFlowForm } from '../../compositors/useFlowForm';
 import { onMounted, ref } from 'vue';
 import Button from '../atoms/Button.vue';
 const activeVideo = ref(0);
-const videoRef = ref<HTMLVideoElement>();
+const videoRef = ref<HTMLIFrameElement>();
 
 const { openFlowForm } = useFlowForm();
 
 const setActiveVideo = (index: number) => {
 	activeVideo.value = index;
 	if (videoRef.value) {
-		videoRef.value.src = require(`../../assets/videos/${availableVideos[activeVideo.value].video}`);
 		if (window.innerWidth < 1024) {
 			videoRef.value.scrollIntoView();
 		}
@@ -52,18 +59,24 @@ const setActiveVideo = (index: number) => {
 const availableVideos = [
 	{
 		id: 1,
-		thumbnail: 'backTo.jpg',
-		video: 'Back o the future pixelart.mp4',
+		thumbnail:
+			'https://i.vimeocdn.com/video/1482163896-0e8104c4d2a43d755cc3b825093f9c84d0afec8823097eded451be3b3f399383-d?mw=1100&mh=619&q=70',
+		video:
+			'https://player.vimeo.com/video/736630974?h=a6a9e21c80&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&muted=1',
 	},
 	{
 		id: 2,
-		thumbnail: 'lila.jpeg',
-		video: 'Vinheta Lila Liloca.mp4',
+		thumbnail:
+			'https://i.vimeocdn.com/video/1482170226-184ba1651033fd8c9a98921605d77d90aaecb10aa767d21f16d0d2ff409f7707-d?mw=1300&mh=756&q=70',
+		video:
+			'https://player.vimeo.com/video/736633886?h=37bf5bbd39&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
 	},
 	{
 		id: 3,
-		thumbnail: 'market.jpg',
-		video: 'Stories Qual Oferta.mp4',
+		thumbnail:
+			'https://i.vimeocdn.com/video/1482173216-760615b45603c29d5e60ef0c1ee2f6fd30ff0d7eff4f4c2b5ae763bd23d4ef17-d?mw=1300&mh=756&q=70',
+		video:
+			'https://player.vimeo.com/video/736636644?h=964706a1ae&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
 	},
 ];
 
@@ -82,8 +95,14 @@ div.your-video {
 			flex-wrap: wrap;
 			gap: 4rem;
 
-			video {
+			iframe {
 				width: 100%;
+				min-height: 20rem;
+
+				.player {
+					width: 100%;
+					height: 100%;
+				}
 			}
 
 			button {
@@ -120,6 +139,7 @@ div.your-video {
 	ul {
 		display: flex;
 		flex-wrap: wrap;
+		justify-content: center;
 		gap: 2rem;
 		margin-top: 4rem;
 
@@ -141,11 +161,24 @@ div.your-video {
 		}
 	}
 }
+
+@media (min-width: 768px) {
+	div.your-video {
+		div {
+			&.highlight-and-content {
+				iframe {
+					min-height: 30rem;
+				}
+			}
+		}
+	}
+}
+
 @media (min-width: 1200px) {
 	div.your-video {
 		div {
 			&.highlight-and-content {
-				video {
+				iframe {
 					width: 90rem;
 					max-width: 80%;
 				}

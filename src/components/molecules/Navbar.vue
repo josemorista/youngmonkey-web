@@ -64,15 +64,15 @@ const navLinks = [
 const socialLinks = [
 	{
 		icon: 'whatsapp',
-		to: '#',
+		to: 'https://wa.me/+5521969172045',
 	},
 	{
 		icon: 'telegram',
-		to: '#',
+		to: 'https://t.me/disilva86',
 	},
 	{
 		icon: 'instagram',
-		to: '#',
+		to: 'https://www.instagram.com/youngmonkeybrasil/',
 	},
 ];
 

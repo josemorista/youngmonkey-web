@@ -40,7 +40,7 @@
 					<a href="mailto:contato@youngmonkey.com"> contato@youngmonkey.com </a>
 					<img src="../../assets/icons/arrow.svg" alt="arrow" />
 				</div>
-				<Button variant="secondary">
+				<Button variant="secondary" @click="goToWhatsApp">
 					<img src="../../assets/icons/whatsapp-footer.svg" alt="whatsapp" />
 					<span>
 						{{ $t('global.contact_us') }}
@@ -83,27 +83,31 @@ const setLocale = (newLocale: string) => {
 	locale.value = newLocale;
 };
 
+const goToWhatsApp = () => {
+	window.open('https://wa.me/+5521969172045', '_blank');
+};
+
 const changeLanguage = computed(() => t('footer.change_language'));
 
 const socialLinks = [
 	{
 		icon: 'facebook.svg',
-		to: '#',
+		to: 'https://www.facebook.com/youngmonkeybrasil/',
 		name: 'Facebook',
 	},
 	{
 		icon: 'instagram-footer.svg',
-		to: '#',
+		to: 'https://www.instagram.com/youngmonkeybrasil/',
 		name: 'Instagram',
 	},
-	{
+	/*{
 		icon: 'twitter.svg',
 		to: '#',
 		name: 'Twitter',
-	},
+	},*/
 	{
 		icon: 'youtube.svg',
-		to: '#',
+		to: 'https://www.youtube.com/channel/UCvBrs-86iXdjn1ZdwwrHO0Q',
 		name: 'Youtube',
 	},
 ];

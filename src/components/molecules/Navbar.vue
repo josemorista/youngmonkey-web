@@ -23,6 +23,7 @@
 					v-for="socialLink of socialLinks"
 					:key="socialLink.icon"
 					:href="socialLink.to"
+					@click.stop.prevent="goToSocialLink(socialLink.to)"
 					v-once
 				>
 					<img :src="require(`../../assets/icons/${socialLink.icon}.svg`)" :alt="socialLink.icon" />
@@ -38,6 +39,7 @@ import Button from '../atoms/Button.vue';
 import { onMounted, onUnmounted, ref } from 'vue';
 import { useFlowForm } from '../../compositors/useFlowForm';
 import logoAnimation from '../../assets/lottie/logo.json';
+import { LINKS } from '../../constants';
 const isMenuOpen = ref(false);
 const toggleMenuOpen = () => {
 	if (window.innerWidth < 1200) {
@@ -64,17 +66,21 @@ const navLinks = [
 const socialLinks = [
 	{
 		icon: 'whatsapp',
-		to: 'https://wa.me/+5521969172045',
+		to: LINKS.whatsapp,
 	},
 	{
 		icon: 'telegram',
-		to: 'https://t.me/disilva86',
+		to: LINKS.telegram,
 	},
 	{
 		icon: 'instagram',
-		to: 'https://www.instagram.com/youngmonkeybrasil/',
+		to: LINKS.instagram,
 	},
 ];
+
+const goToSocialLink = (link: string) => {
+	window.open(link, '_blank');
+};
 
 const resizeListener = () => {
 	if (window.innerWidth >= 1200) {

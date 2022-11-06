@@ -22,7 +22,7 @@
 				</div>
 				<ul class="social-links">
 					<li v-for="social of socialLinks" v-once :key="social.name">
-						<a :href="social.to">
+						<a :href="social.to" @click.stop.prevent="goToSocialLink(social.to)">
 							<img :src="require(`../../assets/icons/${social.icon}`)" :alt="social.name" />
 							<span>{{ social.name }}</span>
 						</a>
@@ -40,7 +40,7 @@
 					<a href="mailto:contato@youngmonkey.com"> contato@youngmonkey.com </a>
 					<img src="../../assets/icons/arrow.svg" alt="arrow" />
 				</div>
-				<Button variant="secondary" @click="goToWhatsApp">
+				<Button variant="secondary" @click="goToSocialLink(LINKS.whatsapp)">
 					<img src="../../assets/icons/whatsapp-footer.svg" alt="whatsapp" />
 					<span>
 						{{ $t('global.contact_us') }}
@@ -71,7 +71,7 @@
 </template>
 
 <script setup lang="ts">
-import { LANGUAGES_DICT } from '../../constants';
+import { LANGUAGES_DICT, LINKS } from '../../constants';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import Button from '../atoms/Button.vue';
@@ -83,8 +83,8 @@ const setLocale = (newLocale: string) => {
 	locale.value = newLocale;
 };
 
-const goToWhatsApp = () => {
-	window.open('https://wa.me/+5521969172045', '_blank');
+const goToSocialLink = (link: string) => {
+	window.open(link, '_blank');
 };
 
 const changeLanguage = computed(() => t('footer.change_language'));
@@ -92,12 +92,12 @@ const changeLanguage = computed(() => t('footer.change_language'));
 const socialLinks = [
 	{
 		icon: 'facebook.svg',
-		to: 'https://www.facebook.com/youngmonkeybrasil/',
+		to: LINKS.facebook,
 		name: 'Facebook',
 	},
 	{
 		icon: 'instagram-footer.svg',
-		to: 'https://www.instagram.com/youngmonkeybrasil/',
+		to: LINKS.instagram,
 		name: 'Instagram',
 	},
 	/*{
@@ -107,7 +107,7 @@ const socialLinks = [
 	},*/
 	{
 		icon: 'youtube.svg',
-		to: 'https://www.youtube.com/channel/UCvBrs-86iXdjn1ZdwwrHO0Q',
+		to: LINKS.youtube,
 		name: 'Youtube',
 	},
 ];

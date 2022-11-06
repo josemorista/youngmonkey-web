@@ -5,10 +5,7 @@
 		</div>
 		<div class="hero-texts">
 			<h1 ref="text1Ref">
-				<span class="typewriter forwards" ref="typewriter1"> {{ text1Options[currentText1] }}</span>
-			</h1>
-			<h1>
-				<span class="typewriter forwards secondary" ref="typewriter2"> {{ text2Options[currentText2] }}</span>
+				<span class="typewriter forwards" ref="typewriter1"> {{ textOptions[currentText] }}</span>
 			</h1>
 			<p class="do-different">
 				{{ $t('hero.do_different') }}
@@ -27,15 +24,16 @@ import { computed, onMounted, onUnmounted, ref } from 'vue';
 import Button from '../atoms/Button.vue';
 import { useI18n } from 'vue-i18n';
 const typewriter1 = ref<HTMLSpanElement>();
-const typewriter2 = ref<HTMLSpanElement>();
 const { openFlowForm } = useFlowForm();
 const { t } = useI18n();
 
-const text1Options = computed(() => [t('hero.stories'), t('hero.videos')]);
-const text2Options = computed(() => [t('hero.incredible'), t('hero.creatives')]);
-
-const currentText1 = ref(0);
-const currentText2 = ref(0);
+const textOptions = computed(() => [
+	t('hero.videos'),
+	t('hero.animation'),
+	t('hero.copywriting'),
+	t('hero.filmmaking'),
+]);
+const currentText = ref(0);
 
 const getNextText = (current: number, options: Array<string>) => {
 	const next = current + 1;
@@ -53,22 +51,13 @@ let animationIntervalHandler: number;
 let textsIntervalHandler: number;
 onMounted(() => {
 	animationIntervalHandler = setInterval(() => {
-		if (typewriter1.value && typewriter2.value) {
+		if (typewriter1.value) {
 			toggleAnimation(typewriter1.value);
-			toggleAnimation(typewriter2.value);
 		}
 	}, 2500);
 	textsIntervalHandler = setInterval(() => {
-		if (typewriter1.value && typewriter2.value) {
-			currentText1.value = getNextText(currentText1.value, text1Options.value);
-			currentText2.value = getNextText(currentText2.value, text2Options.value);
-			if (typewriter2.value.classList.contains('secondary')) {
-				typewriter2.value.classList.remove('secondary');
-				typewriter1.value.classList.add('secondary');
-			} else {
-				typewriter2.value.classList.add('secondary');
-				typewriter1.value.classList.remove('secondary');
-			}
+		if (typewriter1.value) {
+			currentText.value = getNextText(currentText.value, textOptions.value);
 		}
 	}, 5000);
 });
@@ -149,10 +138,7 @@ onUnmounted(() => {
 			font-family: inherit;
 			font-size: inherit;
 			max-width: fit-content;
-			color: var(--color-primary);
-			&.secondary {
-				color: var(--color-secondary);
-			}
+			color: var(--color-secondary);
 		}
 	}
 	p {

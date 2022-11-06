@@ -5,12 +5,7 @@
 		</div>
 		<div class="hero-texts">
 			<h1 ref="text1Ref">
-				<!--{{ $t('hero.videos') }}-->
 				<span class="typewriter forwards" ref="typewriter1"> {{ text1Options[currentText1] }}</span>
-			</h1>
-			<h1>
-				<!--{{ $t('hero.for_your') }}-->
-				<span class="typewriter forwards" ref="typewriter2"> {{ text2Options[currentText2] }}</span>
 			</h1>
 			<p class="do-different">
 				{{ $t('hero.do_different') }}
@@ -29,18 +24,19 @@ import { onMounted, onUnmounted, ref } from 'vue';
 import Button from '../atoms/Button.vue';
 import { useI18n } from 'vue-i18n';
 import heroAnimation from '../../assets/lottie/hero-rocket.json';
+import { computed } from '@vue/reactivity';
 
 const typewriter1 = ref<HTMLSpanElement>();
-const typewriter2 = ref<HTMLSpanElement>();
 
 const { openFlowForm } = useFlowForm();
 const { t } = useI18n();
 
-const text1Options = [t('hero.creatives'), t('hero.incredible')];
-const text2Options = [t('hero.ideas'), t('hero.stories')];
+const text1Options = computed(() => [
+	`${t('hero.ideas')} ${t('hero.creatives')}`,
+	`${t('hero.stories')} ${t('hero.incredible')}`,
+]);
 
 const currentText1 = ref(0);
-const currentText2 = ref(0);
 
 const getNextText = (current: number, options: Array<string>) => {
 	const next = current + 1;
@@ -60,15 +56,14 @@ let animationIntervalHandler: number;
 let textsIntervalHandler: number;
 onMounted(() => {
 	animationIntervalHandler = setInterval(() => {
-		if (typewriter1.value && typewriter2.value) {
+		if (typewriter1.value) {
 			toggleAnimation(typewriter1.value);
-			toggleAnimation(typewriter2.value);
 		}
-	}, 2500);
+	}, 3000);
+
 	textsIntervalHandler = setInterval(() => {
-		currentText1.value = getNextText(currentText1.value, text1Options);
-		currentText2.value = getNextText(currentText2.value, text2Options);
-	}, 5000);
+		currentText1.value = getNextText(currentText1.value, text1Options.value);
+	}, 6000);
 });
 
 onUnmounted(() => {
@@ -83,10 +78,10 @@ onUnmounted(() => {
 	white-space: nowrap;
 	border-right: 3px solid var(--color-secondary);
 	&.forwards {
-		animation: typing-forward 2.5s steps(30, end), blink-caret 0.75s step-end infinite;
+		animation: typing-forward 3s steps(30, end), blink-caret 0.75s step-end infinite;
 	}
 	&.backwards {
-		animation: typing-backwards 2.5s steps(30, end), blink-caret 0.75s step-end infinite;
+		animation: typing-backwards 3s steps(30, end), blink-caret 0.75s step-end infinite;
 	}
 }
 
@@ -142,7 +137,9 @@ onUnmounted(() => {
 	}
 }
 .hero-texts {
-	max-width: 56rem;
+	width: 56rem;
+	max-width: 100%;
+
 	h1 {
 		text-transform: uppercase;
 		color: var(--color-primary);
@@ -154,7 +151,6 @@ onUnmounted(() => {
 			font-family: inherit;
 			font-size: inherit;
 			max-width: fit-content;
-			color: var(--color-secondary);
 		}
 	}
 

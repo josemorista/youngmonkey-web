@@ -3,7 +3,7 @@
 		<div class="highlight-and-content">
 			<iframe
 				ref="videoRef"
-				:src="`${availableVideos[activeVideo].video}&loop=1&autoplay=${firstInteraction ? '0' : '1'}`"
+				:src="`${availableVideos[activeVideo].video}&loop=1&autoplay=${isFirstInteraction ? '0' : '1'}`"
 				frameborder="0"
 				allow="fullscreen; picture-in-picture"
 				title="presentation"
@@ -40,17 +40,17 @@
 
 <script setup lang="ts">
 import { useFlowForm } from '../../compositors/useFlowForm';
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import Button from '../atoms/Button.vue';
 const activeVideo = ref(0);
-const firstInteraction = ref(true);
+const isFirstInteraction = ref(true);
 
 const videoRef = ref<HTMLIFrameElement>();
 
 const { openFlowForm } = useFlowForm();
 
 const setActiveVideo = (index: number) => {
-	firstInteraction.value = false;
+	isFirstInteraction.value = false;
 	activeVideo.value = index;
 	if (videoRef.value) {
 		if (window.innerWidth < 1024) {
@@ -82,10 +82,6 @@ const availableVideos = [
 			'https://player.vimeo.com/video/736636644?h=964706a1ae&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
 	},
 ];
-
-onMounted(() => {
-	setActiveVideo(0);
-});
 </script>
 
 <style lang="scss">

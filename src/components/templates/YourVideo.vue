@@ -3,9 +3,9 @@
 		<div class="highlight-and-content">
 			<iframe
 				ref="videoRef"
-				:src="`${availableVideos[activeVideo].video}&loop=1&autoplay=1`"
+				:src="`${availableVideos[activeVideo].video}&loop=1&autoplay=${firstInteraction ? '0' : '1'}`"
 				frameborder="0"
-				allow="autoplay; loop; fullscreen; picture-in-picture"
+				allow="fullscreen; picture-in-picture"
 				title="presentation"
 				allowfullscreen
 			></iframe>
@@ -43,11 +43,14 @@ import { useFlowForm } from '../../compositors/useFlowForm';
 import { onMounted, ref } from 'vue';
 import Button from '../atoms/Button.vue';
 const activeVideo = ref(0);
+const firstInteraction = ref(true);
+
 const videoRef = ref<HTMLIFrameElement>();
 
 const { openFlowForm } = useFlowForm();
 
 const setActiveVideo = (index: number) => {
+	firstInteraction.value = false;
 	activeVideo.value = index;
 	if (videoRef.value) {
 		if (window.innerWidth < 1024) {
@@ -62,7 +65,7 @@ const availableVideos = [
 		thumbnail:
 			'https://i.vimeocdn.com/video/1482163896-0e8104c4d2a43d755cc3b825093f9c84d0afec8823097eded451be3b3f399383-d?mw=1100&mh=619&q=70',
 		video:
-			'https://player.vimeo.com/video/736630974?h=a6a9e21c80&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&muted=1',
+			'https://player.vimeo.com/video/736630974?h=a6a9e21c80&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
 	},
 	{
 		id: 2,

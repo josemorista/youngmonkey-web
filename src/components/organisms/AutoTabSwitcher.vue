@@ -17,6 +17,7 @@
 			<img :src="tabs[activeTab].img" :alt="tabs[activeTab].title" />
 		</div>
 	</div>
+	<div ref="autoTabEndRef"></div>
 </template>
 
 <script setup lang="ts">
@@ -24,6 +25,8 @@ import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import Tab from '../molecules/Tab.vue';
 
+let intersectionObserver: IntersectionObserver;
+const autoTabEndRef = ref<HTMLDivElement>();
 const activeTab = ref(-1);
 const { t } = useI18n();
 
@@ -61,6 +64,7 @@ const setNextTab = () => {
 	} else {
 		activeTab.value = 0;
 	}
+
 	timeoutHandler = setTimeout(setNextTab, tabs.value[activeTab.value].transition * 1000);
 };
 
@@ -75,6 +79,16 @@ const setCurrentTab = (tabIndex: number) => {
 };
 
 onMounted(() => {
+	intersectionObserver = new IntersectionObserver((entries) => {
+		if (!entries[0].isIntersecting) {
+			clearTimeoutHandler();
+		} else {
+			setNextTab();
+		}
+	});
+	if (autoTabEndRef.value) {
+		intersectionObserver.observe(autoTabEndRef.value);
+	}
 	setNextTab();
 });
 

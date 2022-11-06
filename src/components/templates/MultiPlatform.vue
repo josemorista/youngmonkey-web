@@ -11,7 +11,11 @@
 			{{ $t('mult_platform.content2_part2') }}
 		</p>
 		<div class="img">
-			<dotlottie-player autoplay loop :src="require('../../assets/lottie/mult-plataform.json')"> </dotlottie-player>
+			<LottieAnimation
+				:loop="true"
+				:autoPlay="true"
+				:animationData="require('../../assets/lottie/mult-plataform.json')"
+			/>
 		</div>
 	</section>
 </template>

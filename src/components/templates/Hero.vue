@@ -1,7 +1,7 @@
 <template>
 	<section id="hero" class="hero">
 		<div class="lotier-player">
-			<dotlottie-player autoplay loop :src="heroAnimation"> </dotlottie-player>
+			<LottieAnimation :loop="true" :autoPlay="true" :animationData="require('../../assets/lottie/hero-rocket.json')" />
 		</div>
 		<div class="hero-texts">
 			<h1 ref="text1Ref">
@@ -26,7 +26,6 @@ import { useFlowForm } from '../../compositors/useFlowForm';
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 import Button from '../atoms/Button.vue';
 import { useI18n } from 'vue-i18n';
-import heroAnimation from '../../assets/lottie/hero-rocket.json';
 const typewriter1 = ref<HTMLSpanElement>();
 const typewriter2 = ref<HTMLSpanElement>();
 const { openFlowForm } = useFlowForm();
